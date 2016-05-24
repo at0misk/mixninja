@@ -1,19 +1,137 @@
-<div class="container">
-	<div class="row">
-		<div class="col-xs-4">
-			<h1>User Name</h1>
-			<div class="profilePicture">
-				<%= image_tag "sloth.jpg",  :size => '100x100' %>
-			</div>
-			<h2>Name</h2>
-			<h2>Email</h2>
-			<h3>Location</h3>
-			<h3>Tagline</h3>
-		</div>
-		<div class="col-xs-8">
-			<h1>Tracks</h1>
-			<div class="track">
-			</div>
-		</div>
-	</div>
+
+<div class="container"> 
+ 
+  <button class="btn btn-primary btn-lg" href="#signup" data-toggle="modal" data-target=".bs-modal-sm">Sign In/Register</button>
+
+
+
+<!-- Modal -->
+<div class="modal fade bs-modal-sm" id="myModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+        <br>
+        <div class="bs-example bs-example-tabs">
+            <ul id="myTab" class="nav nav-tabs">
+              <li class="active"><a href="#signin" data-toggle="tab">Sign In</a></li>
+              <li class=""><a href="#signup" data-toggle="tab">Register</a></li>
+            </ul>
+        </div>
+      <div class="modal-body">
+        <div id="myTabContent" class="tab-content">
+        <div class="tab-pane fade active in" id="signin">
+            <form class="form-horizontal">
+            <fieldset>
+            <!-- Sign In Form -->
+            <!-- Text input-->
+            <div class="control-group">
+              <label class="control-label" for="email">Email:</label>
+              <div class="controls">
+                <input required="" id="email" name="email" type="text" class="form-control" placeholder="boaty@mcboatface.com" class="input-medium" required="">
+              </div>
+            </div>
+
+            <!-- Password input-->
+            <div class="control-group">
+              <label class="control-label" for="password">Password:</label>
+              <div class="controls">
+                <input required="" id="password" name="password" class="form-control" type="password" placeholder="********" class="input-medium">
+              </div>
+            </div>
+
+            <!-- Button -->
+            <div class="control-group">
+              <label class="control-label" for="signin"></label>
+              <div class="controls">
+                <button id="signin" name="signin" class="btn btn-success">Sign In</button>
+              </div>
+            </div>
+            </fieldset>
+            </form>
+        </div>
+
+          <div class="tab-pane fade" id="signup">
+            <form class="form-horizontal">
+            <fieldset>
+            <!-- Sign Up Form -->
+            <!-- Text input-->
+            <div class="control-group">
+              <label class="control-label" for="first_name">First Name:</label>
+              <div class="controls">
+                <input id="first_name" name="first_name" class="form-control" type="text" placeholder="Jonny" class="input-large" required="">
+              </div>
+            </div>
+
+    
+            <div class="control-group">
+              <label class="control-label" for="Email">Last Name:</label>
+              <div class="controls">
+                <input id="last_name" name="last_name" class="form-control" type="text" placeholder="Rotten" class="input-large" required="">
+              </div>
+            </div>
+
+               <div class="control-group">
+              <label class="control-label" for="alias">Alias:</label>
+              <div class="controls">
+                <input id="alias" name="alias" class="form-control" type="text" placeholder="Deadpool" class="input-large" required="">
+              </div>
+            </div>
+
+             <div class="control-group">
+              <label class="control-label" for="email">Email:</label>
+              <div class="controls">
+                <input id="email" name="email" class="form-control" type="text" placeholder="boaty@mcboatface.com" class="input-large" required="">
+              </div>
+            </div>
+
+
+               <div class="control-group">
+              <label class="control-label" for="location">Location</label>
+              <div class="controls">
+                <input id="location" name="location" class="form-control" type="text" placeholder="Space" class="input-large" required="">
+              </div>
+            </div>
+
+             <div class="control-group">
+              <label class="control-label" for="tagline">Tagline:</label>
+              <div class="controls">
+                <input id="tagline" name="tagline" class="form-control" type="text" placeholder="I eat turtles" class="input-large" required="">
+              </div>
+            </div>
+
+         
+            <div class="control-group">
+              <label class="control-label" for="password">Password:</label>
+              <div class="controls">
+                <input id="password" name="password" class="form-control" type="password" placeholder="********" class="input-large" required="">
+                <em>1-8 Characters</em>
+              </div>
+            </div>
+            
+            <div class="control-group">
+              <label class="control-label" for="password_confirmation">Confirm Password:</label>
+              <div class="controls">
+                <input required="" id="password_confirmation" name="password_confirmation" class="form-control" type="password" placeholder="********" class="input-medium">
+              </div>
+            </div>
+            
+            
+            <div class="control-group">
+              <label class="control-label" for="confirmsignup"></label>
+              <div class="controls">
+                <button id="confirmsignup" name="confirmsignup" class="btn btn-success">Sign Up</button>
+              </div>
+            </div>
+            </fieldset>
+            </form>
+      </div>
+    </div>
+      </div>
+      <div class="modal-footer">
+      <center>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </center>
+      </div>
+    </div>
+  </div>
 </div>
+

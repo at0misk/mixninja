@@ -13,6 +13,9 @@
  *= require_tree .
  *= require_self
  */
+
+ /* Static Main Header */
+
 body { 
 	padding-top: 70px; 
 }
@@ -23,3 +26,4 @@ body {
 	margin-top: 1%;
 	float: right;
 }
+

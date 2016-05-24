@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
 
+  devise_for :users, controllers: { sessions: 'users/sessions' }
+  # devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
+
   get 'users/index'
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -10,6 +13,11 @@ Rails.application.routes.draw do
   root 'users#index'
 
   get 'tracks' => 'tracks#index'
+
+  post 'tracks' => 'tracks#create'
+  get 'tracks' => 'tracks#index'
+  get 'users/:id' => 'users#show'
+  get 'tracks/:id' => 'tracks#show'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

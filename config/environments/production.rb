@@ -31,6 +31,7 @@ Rails.application.configure do
 
   # Generate digests for assets URLs.
   config.assets.digest = true
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
 

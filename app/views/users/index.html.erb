@@ -81,9 +81,6 @@
           <div class="panel-body lead">
             We made the site as simple and easy to navigate as possible in order to take the stress out of your life and let you just focus on exploring the ocean of soundwaves ready to rock your boat. So please indulge in this sensory decadence of vibrations as we take you down portals of turmoil, ecstacy and adventure. We are here to give you the delight, joy and exhiliration of genuine audioception and not audio-deception unlike most other *cough cough* corners of the web. But we'd like to let the site speak for itself. So don't be lazy. Check us out. 
 
-
-
-
           </div>
         </div>
       </div>
@@ -135,14 +132,16 @@
       <div class="modal-body">
         <div id="myTabContent" class="tab-content">
         <div class="tab-pane fade active in" id="signin">
-            <form class="form-horizontal">
+            
+            <form class="form-horizontal" action="/users/sign_in" class="new_user" id="new_user" method="post">
+            <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
             <fieldset>
             <!-- Sign In Form -->
             <!-- Text input-->
             <div class="control-group">
               <label class="control-label" for="email">Email:</label>
               <div class="controls">
-                <input required="" id="email" name="email" type="text" class="form-control" placeholder="boaty@mcboatface.com" class="input-medium" required="">
+                <input required="" id="email" name="user[email]" type="text" class="form-control" placeholder="boaty@mcboatface.com" class="input-medium" required="">
               </div>
             </div>
 
@@ -150,7 +149,7 @@
             <div class="control-group">
               <label class="control-label" for="password">Password:</label>
               <div class="controls">
-                <input required="" id="password" name="password" class="form-control" type="password" placeholder="********" class="input-medium">
+                <input required="" id="password" name="user[password]" class="form-control" type="password" placeholder="********" class="input-medium">
               </div>
             </div>
 
@@ -158,22 +157,28 @@
             <div class="control-group">
               <label class="control-label" for="signin"></label>
               <div class="controls">
-                <button id="signin" name="signin" class="btn btn-custom">Sign In</button>
+
+                <button id="signin" name="user[signin]" class="btn btn-custom">Sign In</button>
+
               </div>
             </div>
             </fieldset>
             </form>
+            <!-- <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %> -->
+
         </div>
 
           <div class="tab-pane fade" id="signup">
-            <form class="form-horizontal">
+
+            <form class="form-horizontal" action="/users" method="post" class="new_user" id="new_user">
             <fieldset>
             <!-- Sign Up Form -->
+            <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
             <!-- Text input-->
             <div class="control-group">
               <label class="control-label" for="first_name">First Name:</label>
               <div class="controls">
-                <input id="first_name" name="first_name" class="form-control" type="text" placeholder="Jonny" class="input-large" required="">
+                <input id="first_name" name="user[first_name]" class="form-control" type="text" placeholder="Jonny" class="input-large" required="">
               </div>
             </div>
 
@@ -181,21 +186,21 @@
             <div class="control-group">
               <label class="control-label" for="Email">Last Name:</label>
               <div class="controls">
-                <input id="last_name" name="last_name" class="form-control" type="text" placeholder="Rotten" class="input-large" required="">
+                <input id="last_name" name="user[last_name]" class="form-control" type="text" placeholder="Rotten" class="input-large" required="">
               </div>
             </div>
 
                <div class="control-group">
               <label class="control-label" for="alias">Alias:</label>
               <div class="controls">
-                <input id="alias" name="alias" class="form-control" type="text" placeholder="Deadpool" class="input-large" required="">
+                <input id="alias" name="user[alias]" class="form-control" type="text" placeholder="Deadpool" class="input-large" required="">
               </div>
             </div>
 
              <div class="control-group">
               <label class="control-label" for="email">Email:</label>
               <div class="controls">
-                <input id="email" name="email" class="form-control" type="text" placeholder="boaty@mcboatface.com" class="input-large" required="">
+                <input id="email" name="user[email]" class="form-control" type="text" placeholder="boaty@mcboatface.com" class="input-large" required="">
               </div>
             </div>
 
@@ -203,14 +208,14 @@
                <div class="control-group">
               <label class="control-label" for="location">Location</label>
               <div class="controls">
-                <input id="location" name="location" class="form-control" type="text" placeholder="Space" class="input-large" required="">
+                <input id="location" name="user[location]" class="form-control" type="text" placeholder="Space" class="input-large" required="">
               </div>
             </div>
 
              <div class="control-group">
               <label class="control-label" for="tagline">Tagline:</label>
               <div class="controls">
-                <input id="tagline" name="tagline" class="form-control" type="text" placeholder="I eat turtles" class="input-large" required="">
+                <input id="tagline" name="user[tagline]" class="form-control" type="text" placeholder="I eat turtles" class="input-large" required="">
               </div>
             </div>
 
@@ -218,7 +223,7 @@
             <div class="control-group">
               <label class="control-label" for="password">Password:</label>
               <div class="controls">
-                <input id="password" name="password" class="form-control" type="password" placeholder="********" class="input-large" required="">
+                <input id="password" name="user[password]" class="form-control" type="password" placeholder="********" class="input-large" required="">
                 <em>1-8 Characters</em>
               </div>
             </div>
@@ -226,7 +231,7 @@
             <div class="control-group">
               <label class="control-label" for="password_confirmation">Confirm Password:</label>
               <div class="controls">
-                <input required="" id="password_confirmation" name="password_confirmation" class="form-control" type="password" placeholder="********" class="input-medium">
+                <input required="" id="user[password_confirmation]" name="password_confirmation" class="form-control" type="password" placeholder="********" class="input-medium">
               </div>
             </div>
             

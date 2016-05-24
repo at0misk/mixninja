@@ -30,53 +30,6 @@ html, body {
   width: 100%;
 }
 
-.btn-default { 
-  color: #ffffff; 
-  background-color: #611BBD; 
-  border-color: #130269; 
-} 
- 
-.btn-default:hover, 
-.btn-default:focus, 
-.btn-default:active, 
-.btn-default.active, 
-.open .dropdown-toggle.btn-default { 
-  color: #ffffff; 
-  background-color: #49247A; 
-  border-color: #130269; 
-} 
- 
-.btn-default:active, 
-.btn-default.active, 
-.open .dropdown-toggle.btn-default { 
-  background-image: none; 
-} 
- 
-.btn-default.disabled, 
-.btn-default[disabled], 
-fieldset[disabled] .btn-default, 
-.btn-default.disabled:hover, 
-.btn-default[disabled]:hover, 
-fieldset[disabled] .btn-default:hover, 
-.btn-default.disabled:focus, 
-.btn-default[disabled]:focus, 
-fieldset[disabled] .btn-default:focus, 
-.btn-default.disabled:active, 
-.btn-default[disabled]:active, 
-fieldset[disabled] .btn-default:active, 
-.btn-default.disabled.active, 
-.btn-default[disabled].active, 
-fieldset[disabled] .btn-default.active { 
-  background-color: #611BBD; 
-  border-color: #130269; 
-} 
- 
-.btn-default .badge { 
-  color: #611BBD; 
-  background-color: #ffffff; 
-}
-
-
 /* padded section */
 .pad-section {
   padding: 50px 0;

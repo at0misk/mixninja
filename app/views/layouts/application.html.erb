@@ -42,12 +42,7 @@
   			Upload
 		</button>
     </div>
-  	<div class="navButton">
-		Profile
-    </div>
-  	<div class="navButton">
-	 	<ahref="#signup" data-toggle="modal" data-target=".bs-modal-sm">Sign In/Register</a>
-    </div>
+  	
     <div class="navButton">
 		  <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
     </div>
@@ -67,6 +62,7 @@
 
 
 <!-- Track Modal -->
+<% if current_user %>
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -75,13 +71,13 @@
         <h4 class="modal-title" id="myModalLabel">Upload a Track</h4>
       </div>
       <div class="modal-body">
-        	<form action="/tracks" method="post" class="trackForm">
+        	<form action="/tracks" method="post" class="trackForm" enctype="multipart/form-data">
 				<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-				<input name="track[user]" value="" type="hidden">
+				<input name="track[user_id]" value="<%= current_user[:id] %>" type="hidden">
 				<p>Title: <input type="text" name="track[title]"></p>
-				<p>Description: <textarea name="track[description]" class="commentBox"></textarea>
-				<p>File: <input id="track_avatar" name="track[avatar]" type="file"></p>
-				<p><input name="commit" type="submit" value="Upload"></p>
+				<p>Description: <textarea name="track[desc]" class="commentBox"></textarea>
+				<p>File: <input id="track_avatar" name="track[avatar]" type="file" accept=".mp3,audio/*"></p>
+				<p><input type="submit" value="Upload"></p>
 			</form>
       </div>
       <div class="modal-footer">
@@ -92,6 +88,7 @@
     </div>
   </div>
 </div>
+<% end %>
 <%= yield %>
 
 </body>

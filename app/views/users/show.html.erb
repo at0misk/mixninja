@@ -1,12 +1,13 @@
 <div class="container">
 	<div class="row">
 		<div class="col-xs-4">
-			<h1>User Name</h1>
+			<%= current_user[:id] %>
+			<h1><%= @User.alias %></h1>
 			<div class="profilePicture">
 				<%= image_tag "sloth.jpg",  :size => '100x100' %>
 			</div>
 			<h2><%= @User.first_name %> <%= @User.last_name %></h2>
-			<h2>Email</h2>
+			<h2><%= @User.email %></h2>
 			<h3><%= @User.location %></h3>
 			<h3><%= @User.tagline %></h3>
 		</div>

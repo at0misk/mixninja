@@ -5,11 +5,16 @@ class TracksController < ApplicationController
 		@Track = Track.find(params[:id])
 	end
 	def create
-		@Track = track_params
-		puts track_params
+		@Track = Track.new(track_params)
+		if @Track.save
+			puts "saved"
+		else
+			puts "didn't save"
+			puts "#{@Track}"
+		end
 		redirect_to :back
 	end
 	def track_params
-  		params.require(:track).permit(:title, :description, :user_id, :avatar)
+  		params.require(:track).permit(:title, :desc, :user_id, :avatar)
 	end
 end

@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get 'tracks' => 'tracks#index'
   get 'users/:id' => 'users#show'
   get 'tracks/:id' => 'tracks#show'
+  post 'comments' => 'comments#create'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

@@ -4,20 +4,31 @@
 			<h1><%= @Track.title %></h1>
 			<h3>By: <a href="/users/<%= @Track.user.id %>"><%= @Track.user.first_name %> <%= @Track.user.last_name %></a></h3>
 			<p><%= @Track.desc %></p>
+
 			<div class="track">
-				Wave
+				<audio controls>
+  					<source src="<%= @Track.avatar.url %>" type="audio/mpeg">
+					Your browser does not support the audio element.
+				</audio>
 			</div>
 			<div class="track">
 				Track List
 			</div>
 			<div class="track">
 				Comments
+				<% if @Track.comments %>
+					<% @Track.comments.each do |c| %>
+					<p><%= c.content %></p>
+					<p>By: <a href="/users/<%= c.user.id %>"><%= c.user.first_name %> <%= c.user.last_name %></a></p>
+					<% end %>
+				<% end %>
 			</div>
-			<form action="comments" method="post" class="commentForm">
+			<form action="/comments" method="post" class="commentForm">
 				<h3>Add A Comment:</h3>
 				<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-				<input name="comment[user]" value="" type="hidden">
-				<textarea name="comment[description]" class="commentBox"></textarea>
+				<input name="comment[track_id]" value="<%= @Track.id %>" type="hidden">
+				<input name="comment[user_id]" value="<%= current_user[:id] %>" type="hidden">
+				<textarea name="comment[content]" class="commentBox"></textarea>
 				<p><input type="submit" value="Comment"></p>
 			</form>
 		</div>

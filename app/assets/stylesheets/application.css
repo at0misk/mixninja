@@ -24,6 +24,35 @@ body {
 	font-size: 1.5em;
 	margin-left: 1%;
 	margin-top: 1%;
-	float: right;
+	float: right; 
+	color: white;      
 }
+
+.navbar {
+	height: 85px;
+	background: #673AB7; /* fallback for old browsers */
+background: -webkit-linear-gradient(to left, #673AB7 , #512DA8); /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to left, #673AB7 , #512DA8); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        
+}
+
+
+.btn-custom {
+  background-color: hsl(278, 89%, 29%) !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#a31cf1", endColorstr="#5b088b");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#a31cf1), to(#5b088b));
+  background-image: -moz-linear-gradient(top, #a31cf1, #5b088b);
+  background-image: -ms-linear-gradient(top, #a31cf1, #5b088b);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #a31cf1), color-stop(100%, #5b088b));
+  background-image: -webkit-linear-gradient(top, #a31cf1, #5b088b);
+  background-image: -o-linear-gradient(top, #a31cf1, #5b088b);
+  background-image: linear-gradient(#a31cf1, #5b088b);
+  border-color: #5b088b #5b088b hsl(278, 89%, 23%);
+  color: #fff !important;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.39);
+  -webkit-font-smoothing: antialiased;
+}
+
+
 

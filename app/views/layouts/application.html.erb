@@ -2,7 +2,16 @@
 <html>
 <head>
   <title>Mixninja</title>
-  <!-- Latest compiled and minified CSS -->
+
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+ <script src="js/main.js"></script>
+  
+
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+
+ <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
 <!-- Optional theme -->
@@ -10,11 +19,12 @@
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
  
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 
 </head>
 <body>
@@ -22,17 +32,14 @@
 
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container">
-  	<div class="navButton">
+  <div class="navButton">
 		Upload
     </div>
   	<div class="navButton">
 		Profile
     </div>
-    <div class="navButton">
-		Register
-    </div>
-    <div class="navButton">
-    	Login
+  	<div class="navButton">
+	 	<ahref="#signup" data-toggle="modal" data-target=".bs-modal-sm">Sign In/Register</a>
     </div>
   </div>
 </nav>

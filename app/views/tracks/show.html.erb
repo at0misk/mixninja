@@ -1,0 +1,25 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<h1><%= @Track.title %></h1>
+			<h3>By: <a href="/users/<%= @Track.user.id %>"><%= @Track.user.first_name %> <%= @Track.user.last_name %></a></h3>
+			<p><%= @Track.desc %></p>
+			<div class="track">
+				Wave
+			</div>
+			<div class="track">
+				Track List
+			</div>
+			<div class="track">
+				Comments
+			</div>
+			<form action="comments" method="post" class="commentForm">
+				<h3>Add A Comment:</h3>
+				<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+				<input name="comment[user]" value="" type="hidden">
+				<textarea name="comment[description]" class="commentBox"></textarea>
+				<p><input type="submit" value="Comment"></p>
+			</form>
+		</div>
+	</div>
+</div>

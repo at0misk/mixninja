@@ -50,7 +50,6 @@ ActiveRecord::Schema.define(version: 20160523211630) do
     t.string   "start"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "track_id"
   end
 
   create_table "tracks", force: true do |t|
@@ -79,4 +78,5 @@ ActiveRecord::Schema.define(version: 20160523211630) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
   end
+
 end

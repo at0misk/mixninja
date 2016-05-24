@@ -1,16 +1,22 @@
 Rails.application.routes.draw do
 
 
-  devise_for :users, controllers: { sessions: 'users/sessions' }
-  # devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
+  # devise_for :users, controllers: { sessions: 'users/sessions' }
+
+  devise_for :users
+    authenticated :user do
+      root to: 'users#current_show', as: :authenticated_root
+    end
+  # root to: redirect('/users/sign_in')
+  root to: 'users#index'
 
   get 'users/index'
-
+  post 'users/sign_in' => 'users#whatever'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'users#index'
+  # root 'users#index'
 
   get 'tracks' => 'tracks#index'
 

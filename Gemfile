@@ -12,6 +12,7 @@ gem 'spring',        group: :development
 gem 'rename'
 # Use ActiveModel has_secure_password
 gem 'devise'
+gem 'omniauth-facebook'
 gem 'bcrypt', '~> 3.1.7'
 group :test, :development do
   gem 'rspec-rails'

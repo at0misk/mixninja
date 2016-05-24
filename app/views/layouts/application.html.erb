@@ -32,10 +32,8 @@
 		Profile
     </div>
     <div class="navButton">
-		Register
-    </div>
-    <div class="navButton">
-    	Login
+		  <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
+
     </div>
   </div>
 </nav>

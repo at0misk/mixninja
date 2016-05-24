@@ -20,6 +20,7 @@
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
 
+<% if current_user %>
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container">
   	<div class="navButton">
@@ -38,6 +39,19 @@
     </div>
   </div>
 </nav>
+
+  <% else %>
+  <nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navButton">
+      <button class="btn btn-primary btn-lg" href="#signup" data-toggle="modal" data-target=".bs-modal-sm">Sign In/Register</button>
+
+  </div>
+</nav>
+<% end %>
+
+
+
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">

@@ -1,9 +1,122 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+
+<!-- first section - Home -->
+<div id="home" class="home">
+  <div class="text-vcenter">
+    <h1>MixNinja</h1>
+    <h3>Fuck what you heard. This is where it's at.</h3>
+    <a href="#about" class="btn btn-custom btn-lg">Continue</a>
+  </div>
+</div>
+<!-- /first section -->
+
+<!-- second section - About -->
+<div id="about" class="pad-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6">
+      <%= image_tag "DJ3.jpg" %>
+  <!--     <%= image_tag "maxresdefault.jpg" %> -->
+    
+      </div>
+      <div class="col-sm-6 text-center">
+        <h2>Welcome to MixNoise </h2>
+        <p class="lead">The place where real artists can showcase their music and where authentic musicophiles can discover hidden treasures. We're the cream of the crop of music sites because well...we're just cooler.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /second section -->
+
+<!-- third section - Services -->
+<div id="services" class="pad-section">
+  <div class="container">
+    <h2 class="text-center">Perks</h2> <hr />
+    <div class="row text-center">
+      <div class="col-sm-3 col-xs-6">
+        <i class="glyphicon glyphicon-cloud"> </i>
+        <h4>Upload</h4>
+        <p>Upload your own mixes, beats, music and whatever tickles your fancy (provided it's quality) and share your passion and talents with like-minded individuals.</p>
+      </div>
+      <div class="col-sm-3 col-xs-6">
+        <i class="glyphicon glyphicon-headphones"> </i>
+        <h4>Listen</h4>
+        <p>Listen to your favorite discoveries at home, at work, while trippin' on a forest or to filter out your significant other's nagging. Listen wherever, whenever. </p>
+      </div>
+      <div class="col-sm-3 col-xs-6">
+        <i class="glyphicon glyphicon-road"> </i>
+        <h4>Connect</h4>
+        <p>Connect with other artists and music fanatics and spread the love. Because nothing beats exchanging ideas and evoking emotion.  </p>
+      </div>
+      <div class="col-sm-3 col-xs-6">
+        <i class="glyphicon glyphicon-music"> </i>
+        <h4>Discover</h4>
+        <p>Step out of your comfort zone, explore new music and spice up your life. We've all had that time in our lives where we've cycled the same 5 songs on our playlist or (God forbid) listened to the radio. Come on you're better than that.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /third section -->
+
+<!-- fourth section - Information -->
+<div id="information" class="pad-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h2 class="panel-title">About Us</h2>
+          </div>
+          <div class="panel-body lead">
+            This site was created by a bunch of cool jerks who felt music sites and apps out there just sucked. Abnoxious commercials, music junk and teenage pop stars were some of the things we found absolutely appalling that we wanted to change. So being fed up with sellouts, we decided to take matters into our own hands. We wanted to create something fresh and new for people like us who wanted to hear some real bangers created by people whose passion still fuels their art instead of their egos. So yeah...no Taco Bell jingles here.  
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h2 class="panel-title">About the Site</h2>
+          </div>
+          <div class="panel-body lead">
+            We made the site as simple and easy to navigate as possible in order to take the stress out of your life and let you just focus on exploring the ocean of soundwaves ready to rock your boat. So please indulge in this sensory decadence of vibrations as we take you down portals of turmoil, ecstacy and adventure. We are here to give you the delight, joy and exhiliration of genuine audioception and not audio-deception unlike most other *cough cough* corners of the web. But we'd like to let the site speak for itself. So don't be lazy. Check us out. 
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /fourth section -->
+
+<!-- fifth section -->
+<div id="services" class="pad-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <h3>Vibe to the Beat of Your Own Drum</h3>
+        <h4>And Get Ready to Make Some Noise...</h4>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /fifth section -->
+
+
+<!-- footer -->
+<footer>
+  <hr />
+  <div class="container">
+    <p class="text-right">Copyright &copy; CV & K aka Cool Jerks</p>
+  </div>
+</footer>
+<!-- /footer -->
+
+
+
 
 <div class="container"> 
  
-  <button class="btn btn-primary btn-lg" href="#signup" data-toggle="modal" data-target=".bs-modal-sm">Sign In/Register</button>
-
-
 
 <!-- Modal -->
 <div class="modal fade bs-modal-sm" id="myModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
@@ -12,8 +125,8 @@
         <br>
         <div class="bs-example bs-example-tabs">
             <ul id="myTab" class="nav nav-tabs">
-              <li class="active"><a href="#signin" data-toggle="tab">Sign In</a></li>
-              <li class=""><a href="#signup" data-toggle="tab">Register</a></li>
+              <li class="active"><a href="#signin" data-toggle="tab" style="color:black">Sign In</a></li>
+              <li class=""><a href="#signup" data-toggle="tab" style="color:black">Register</a></li>
             </ul>
         </div>
       <div class="modal-body">
@@ -44,12 +157,14 @@
             <div class="control-group">
               <label class="control-label" for="signin"></label>
               <div class="controls">
-                <button id="signin" name="user[signin]" class="btn btn-success">Sign In</button>
+
+                <button id="signin" name="user[signin]" class="btn btn-custom">Sign In</button>
+
               </div>
             </div>
             </fieldset>
             </form>
-            <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
+            <!-- <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %> -->
 
         </div>
 
@@ -124,7 +239,7 @@
             <div class="control-group">
               <label class="control-label" for="confirmsignup"></label>
               <div class="controls">
-                <button id="confirmsignup" name="confirmsignup" class="btn btn-success">Sign Up</button>
+                <button id="confirmsignup" name="confirmsignup" class="btn btn-custom">Sign Up</button>
               </div>
             </div>
             </fieldset>
@@ -134,10 +249,12 @@
       </div>
       <div class="modal-footer">
       <center>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-custom" data-dismiss="modal">Close</button>
         </center>
       </div>
     </div>
   </div>
 </div>
+
+
 

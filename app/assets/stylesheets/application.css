@@ -67,6 +67,18 @@ background: linear-gradient(to left, #673AB7 , #512DA8); /* W3C, IE 10+/ Edge, F
   color: #fff !important;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.42);
   -webkit-font-smoothing: antialiased;
+}
+
+.navButton a {
+  text-decoration: none
+  color: white;
+}
+
+.navButton a:link, a:visited {
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+}
 
 
 

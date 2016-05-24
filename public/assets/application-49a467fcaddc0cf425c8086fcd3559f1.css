@@ -1,3 +1,14 @@
+/*#profileContainer {
+	width:90%;
+	height:800px;
+	margin:0px auto;
+	border: 1px solid black;
+}*/
+/* line 8, /Users/kevintaylor/Desktop/Programming/mixninja/app/assets/stylesheets/users.css.scss */
+.profilePicture {
+  width: 100px;
+  height: 100px;
+}
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -10,20 +21,7 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
- *= require_self
+
+
  */
-
- /* Static Main Header */
-
-body { 
-	padding-top: 70px; 
-}
-.navButton{
-	display: inline-block;
-	font-size: 1.5em;
-	margin-left: 1%;
-	margin-top: 1%;
-	float: right;
-}
 

@@ -80,5 +80,4 @@ ActiveRecord::Schema.define(version: 20160523215258) do
     t.datetime "avatar_updated_at"
     t.string   "alias"
   end
-
 end

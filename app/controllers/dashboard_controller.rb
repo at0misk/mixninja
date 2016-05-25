@@ -1,6 +1,8 @@
 class DashboardController < ApplicationController
 
 	def index
-		# render :json => Player.all
+	end
+	def show
+		render :json => Track.all
 	end
 end

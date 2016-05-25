@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   get 'tracks' => 'tracks#index'
   get 'users/:id' => 'users#show'
   get 'tracks/:id' => 'tracks#show'
-
+  patch 'users/:id' => 'users#update'
   get 'dashboard' => 'dashboard#index'
 
   post 'comments' => 'comments#create'

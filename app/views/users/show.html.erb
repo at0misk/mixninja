@@ -4,7 +4,7 @@
 			<%= current_user[:id] %>
 			<h1><%= @User.alias %></h1>
 			<div class="profilePicture">
-				<%= image_tag "sloth.jpg",  :size => '100x100' %>
+				<img class='profilePicture' src='<%= @User.avatar.url   %>' />
 			</div>
 			<h2><%= @User.first_name %> <%= @User.last_name %></h2>
 			<h2><%= @User.email %></h2>

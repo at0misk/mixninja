@@ -87,6 +87,9 @@
 				<p>Title: <input type="text" name="track[title]"></p>
 				<p>Description: <textarea name="track[desc]" class="commentBox"></textarea>
 				<p>File: <input id="track_avatar" name="track[avatar]" type="file" accept=".mp3,audio/*"></p>
+        <p>Tracks:</p>
+        <div id="field"><input autocomplete="off" class="input" id="field1" name="prof1" type="text" placeholder="Type something" data-items="8"/><button id="b1" class="btn add-more" type="button">+</button></div>
+
 				<p><input type="submit" value="Upload"></p>
 			</form>
       </div>
@@ -168,14 +171,13 @@
                 <button id="confirmsignup" name="confirmsignup" class="btn btn-custom">Save Changes</button>
               </div>
             </div>
-              <form action='/users/:id' method='post' data-method='delete'>              
-                <!-- <button id="deleteprofile" name="deleteprofile" class="btn btn-danger" >Delete Profile</button> -->
-                <%= button_to 'Destroy', {action: :destroy, id: current_user.id, :class => "btn btn-danger"},  onclick: 'return confirm("Are you sure?")', method: :delete %>      
-              </form>
+              
             </div>
             </fieldset>
             </form>
-
+            <form action='/users/:id' method='post' data-method='delete'>                              
+              <%= button_to 'Destroy', {action: :destroy, id: current_user.id},  onclick: 'return confirm("Are you sure?")', method: :delete, :class => "btn btn-danger" %>      
+            </form>
 
 
 

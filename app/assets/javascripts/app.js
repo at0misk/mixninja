@@ -1,17 +1,21 @@
-var app = angular.module('nbaApp', ['ngRoute']);
+var app = angular.module('musicApp', ['ngRoute']);
 app.config(function($routeProvider) {
     $routeProvider
         .when("/following", {
             templateUrl: "/partials/following.html",
-            controller: "playersController"
+            controller: "followsController"
         })
         .when("/new", {
             templateUrl: "/partials/new.html",
-            controller: "teamsController"
+            controller: "newController"
+        })
+         .when("/top_rated", {
+            templateUrl: "/partials/top_rated.html",
+            controller: "trendingController"
         })
 });
 
-app.factory("playerFactory", function($http){
+app.factory("followsFactory", function($http){
     var factory = {};
     factory.index = function(callback) {
         $http.get("/players").success(function(output){
@@ -20,15 +24,37 @@ app.factory("playerFactory", function($http){
     }
     return factory;
 })
-app.controller("playersController", function($scope, playerFactory){
-    playerFactory.index(function(json){
-        $scope.players = json;
-    })
+
+app.factory("newReleasesFactory", function($http){
+    var factory = {};
+    factory.index = function(callback) {
+        $http.get("/teams").success(function(output){
+            callback(output);
+        })
+    }
+    return factory;
+})
+
+app.factory("trendingFactory", function($http){
+    var factory = {};
+    factory.index = function(callback) {
+        $http.get("/teams").success(function(output){
+            callback(output);
+        })
+    }
+    return factory;
 })
 
 
-app.controller("playersController", function($scope){
-    $scope.players = [
+
+
+app.controller("followsController", function($scope, followsFactory){
+
+    followsFactory.index(function(json){
+        $scope.follows = json;
+    })
+
+    $scope.follows = [
         {firstName: "Michael", lastName: "Jordan"},
         {firstName: "Kobe", lastName: "Bryant"},
         {firstName: "Kevin", lastName: "Garnett"},
@@ -39,8 +65,32 @@ app.controller("playersController", function($scope){
         {firstName: "Jimmy", lastName: "Butler"}
     ]
 })
-app.controller("teamsController", function($scope){
-    $scope.teams = [
+
+app.controller("trendingController", function($scope, trendingFactory){
+
+    trendingFactory.index(function(json){
+        $scope.trends = json;
+    })
+
+    $scope.trends = [
+        {firstName: "Michael", lastName: "Jordan"},
+        {firstName: "Kobe", lastName: "Bryant"},
+        {firstName: "Kevin", lastName: "Garnett"},
+        {firstName: "LeBron", lastName: "James"},
+        {firstName: "Stephen", lastName: "Curry"},
+        {firstName: "Jordan", lastName: "Clarkson"},
+        {firstName: "Derek", lastName: "Fisher"},
+        {firstName: "Jimmy", lastName: "Butler"}
+    ]
+})
+
+app.controller("newController", function($scope, newReleasesFactory){
+
+   newReleasesFactory.index(function(json){
+        $scope.newReleases = json;
+    })
+
+    $scope.newReleases = [
         {name: "Boston Celtics"},
         {name: "Brooklyn Nets"},
         {name: "New York Knicks"},

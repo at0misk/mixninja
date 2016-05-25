@@ -16,15 +16,34 @@
 			</div>
 	</div>
 	<div class="row">
-		<div class="col-xs-12">
-			<h1>Tracks</h1>
-				<div id="track">
-					<% @User.tracks.each do |t| %>
-					<p><a href="/tracks/<%= t.id %>"><%= t.title %></a></p>
-					<p><%= t.desc %></p>
-					<% end %>
+		<div class="col-xs-8">
+			<h1>Tracks</h1>			
+			<% @User.tracks.each do |t| %>	
+				<div class="track">			
+					<div id="waveform<%= t.id %>"></div>
+						<div class="control">
+							 <button class="btn btn-primary" onclick="wavesurfer<%= t.id %>.playPause()">
+								<i class="glyphicon glyphicon-play"></i>
+			    				Play
+			  				</button>
+							<p><a href="/tracks/<%= t.id %>"><%= t.title %></a></p>
+							<p><%= t.desc %></p>
+						</div>
+					<script type="text/javascript">
+						var wavesurfer<%= t.id %> = WaveSurfer.create({
+							barWidth: 1,
+							fillParent: true,
+							progressColor: 'green',
+							waveColor: 'orange',
+							container: '#waveform<%= t.id %>',
+							backend: 'MediaElement',
+							scrollParent: true
+						});
+						wavesurfer<%= t.id %>.load('<%= t.avatar.url %>');
+					</script>
 				</div>
-		    </div>
+			<% end %>			
+		</div>
 	</div>
 </div>
 <%= current_user[:id] %>

@@ -10,7 +10,11 @@
 .track {
 	margin-top: 5%;
 	width:70%;
+<<<<<<< HEAD
 	height:100px;
+=======
+	border: 1px solid black;
+>>>>>>> 10b059fd0dfbc2b9b5cbaf39d0c846e74f2242bb
 }
 .commentForm {
 	margin-top: 3%;
@@ -20,6 +24,7 @@
 	height:100px;
 }
 
+/* Typed */
 
 /* Landing Page */
 
@@ -163,4 +168,10 @@ footer .glyphicon:hover {
 
 #profileTracks{
 	display: inline-flex;
+}
+
+.navButton #link a:link, .navButton #link a:visited {
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
 }

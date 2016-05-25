@@ -18,6 +18,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.0.52/wavesurfer.min.js"></script>
 
 
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
@@ -33,16 +34,25 @@
 <% if current_user %>
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container">
-
+    <div class="navButton">
+     <button type="button" class="btn btn-custom btn-lg"><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></button>        
+    </div>
+    <div class="navButton">
+    <button type="button" class="btn btn-custom btn-lg" data-toggle="modal" data-target="#myModal">
+        Profile
+    </button>
+    </div>
   	<div class="navButton">
 		<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
   			Upload
 		</button>
     </div>
   	
+
     <div class="navButton">
-		  <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
+		 <button class="btn btn-custom btn-lg" id="link"><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></button>        
     </div>
+
   </div>
 </nav>
 

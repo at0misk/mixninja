@@ -1,0 +1,11 @@
+<div>
+	<h2> Trending </h2>
+
+	<div class="input-group">
+      <input type="text" class="form-control" placeholder="Search for..." ng-model="filter_name">
+    </div>
+
+	<ul>
+        <li ng-repeat="trend in trends | filter:filter_name">{{ trend.firstName }} {{ trend.lastName }}</li>
+    </ul>
+ </div>

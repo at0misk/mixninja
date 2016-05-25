@@ -1,6 +1,12 @@
 <div>
-    <h2>NBA Players</h2>
+    <h2>Beats You Are Following</h2>
+
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Search for..." ng-model="filter_name" >
+    </div>
+
+    
     <ul>
-        <li ng-repeat="player in players">{{ player.firstName }} {{ player.lastName }}</li>
+        <li ng-repeat="follow in follows | filter:filter_name">{{ follow.firstName }} {{ follow.lastName }}</li>
     </ul>
 </div>

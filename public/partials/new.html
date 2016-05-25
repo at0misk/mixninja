@@ -1,6 +1,11 @@
 <div>
-    <h2>NBA Teams</h2>
+    <h2>New Releases</h2>
+
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Search for..." ng-model="filter_name">
+    </div>
+
     <ul>
-        <li ng-repeat="team in teams">{{ team.name }}</li>
+        <li ng-repeat="new in newReleases | filter:filter_name">{{ new.name }}</li>
     </ul>
 </div>

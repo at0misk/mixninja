@@ -19,6 +19,7 @@
 	height:100px;
 }
 
+/* Typed */
 
 /* Landing Page */
 
@@ -133,4 +134,11 @@ footer .glyphicon {
 }
 footer .glyphicon:hover {
   color: #306d9f;
+}
+
+
+.navButton #link a:link, .navButton #link a:visited {
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
 }

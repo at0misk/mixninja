@@ -15,10 +15,6 @@
  */
 
  /* Static Main Header */
-
-body { 
-	padding-top: 70px; 
-}
 .navButton{
 	display: inline-block;
 	font-size: 1.5em;

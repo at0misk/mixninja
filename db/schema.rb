@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 20160524215457) do
     t.string   "start",      limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "track_id"
+    t.string   "track_id",   limit: 255
   end
 
   create_table "tracks", force: :cascade do |t|

@@ -3,7 +3,10 @@
 <head>
   <title>Mixninja</title>
 
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+   <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.min.js" %>
+   <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular-route.min.js" %>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
  <script src="js/main.js"></script>
   
 
@@ -35,13 +38,13 @@
   <div class="container">
 
   	<div class="navButton">
-		<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+		<button type="button" class="btn btn-custom btn-lg" data-toggle="modal" data-target="#myModal">
   			Upload
 		</button>
     </div>
   	
     <div class="navButton">
-		  <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
+		 <button type="button" class="btn btn-custom btn-lg"><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></button>        
     </div>
   </div>
 </nav>

@@ -69,12 +69,12 @@
 							<h3><%= t.desc %></h3>
 							<div id="waveform<%= t.id %>"></div>
 							<div class="control">
-							 <button class="btn btn-primary" onclick="wavesurfer<%= t.id %>.playPause()">
+							 <button class="btn btn-custom" onclick="wavesurfer<%= t.id %>.playPause()">
 								<i class="glyphicon glyphicon-play"></i>
 			    				Play/Pause
 			  				</button>
 			  				<% if current_user[:id] == @User.id %>
-							<button type="button" class="btn btn-primary " data-toggle="modal" data-target="#deleteModal<%= t.id %>">
+							<button type="button" class="btn btn-custom " data-toggle="modal" data-target="#deleteModal<%= t.id %>">
 					  			Delete
 							</button>
 							<% end %>

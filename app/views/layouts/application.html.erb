@@ -37,16 +37,21 @@
 <% if current_user %>
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container">
-
+    <div class="navButton">
+     <button type="button" class="btn btn-custom btn-lg"><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></button>        
+    </div>
+    <div class="navButton">
+    <button type="button" class="btn btn-custom btn-lg" data-toggle="modal" data-target="#myModal">
+        Profile
+    </button>
+    </div>
   	<div class="navButton">
 		<button type="button" class="btn btn-custom btn-lg" data-toggle="modal" data-target="#myModal">
   			Upload
 		</button>
     </div>
   	
-    <div class="navButton">
-		 <button type="button" class="btn btn-custom btn-lg"><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></button>        
-    </div>
+    
   </div>
 </nav>
 

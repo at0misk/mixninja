@@ -19,17 +19,29 @@ Rails.application.routes.draw do
   # root 'users#index'
 
   get 'tracks' => 'tracks#index'
+   delete 'tracks' => 'tracks#destroy'
+  get 'dashboard' => 'dashboard#index'
+  get 'dashboard/show' => 'dashboard#show'
+  get 'trending' => 'trending#index'
+  get 'trending/show' => 'trending#show'
+  get 'new_tracks' => 'new_tracks#index'
+  get 'new_tracks/show' => 'new_tracks#show'
+
+  post 'comments' => 'comments#create'
 
   post 'tracks' => 'tracks#create'
   post 'like' => 'likes#create'
   delete 'like' => 'likes#destroy'
   get 'tracks' => 'tracks#index'
+
   delete 'tracks' => 'tracks#destroy'
+  delete 'users/:id' => 'users#destroy'
   get 'dashboard' => 'dashboard#index'
   post 'comments' => 'comments#create'
   get 'users/:id' => 'users#show'
   get 'tracks/:id' => 'tracks#show'
   patch 'users/:id' => 'users#update'
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

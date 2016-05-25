@@ -1,4 +1,6 @@
 <div class="container">
+	<div class="buffer">
+	</div>
 	<div class="row">
 		<div class="col-xs-12">
 			<h1><%= @Track.title %></h1>
@@ -31,16 +33,31 @@
 						wavesurfer.load('<%= @Track.avatar.url %>');
 					</script>
 			</div>
+			<% if @Likes.exists?(user_id: current_user[:id]) %>
+			<form action="/like" method="post">
+				<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+				<input type='hidden' name='_method' value='delete'>
+				<input type="hidden" name="like[user_id]" value="<%= current_user[:id] %>">
+				<input type="hidden" name="like[track_id]" value="<%= @Track.id %>">
+				<input type="submit" value="Unlike">
+			</form>
+			<% else %>
+			<form action="/like" method="post">
+				<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+				<input type="hidden" name="like[user_id]" value="<%= current_user[:id] %>">
+				<input type="hidden" name="like[track_id]" value="<%= @Track.id %>">
+				<input type="submit" value="Like">
+			</form>
+			<% end %>
+			<h4>Likes: <%= @Likes.count %></h4>
 			<div class="track">
 				Track List
 			</div>
 			<div class="track">
 				Comments
-				<% if @Track.comments %>
 					<% @Track.comments.each do |c| %>
-					<p><%= c.content %></p>
 					<p><div class="profilePictureSmall"><img class='profilePictureSmall' src='<%= c.user.avatar.url   %>'></img></div> <a href="/users/<%= c.user.id %>"><%= c.user.alias %></a></p>
-					<% end %>
+					<p><%= c.content %></p>
 				<% end %>
 			</div>
 			<form action="/comments" method="post" class="commentForm">

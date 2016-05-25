@@ -8,10 +8,10 @@ class User < ActiveRecord::Base
 	has_attached_file :avatar
 	validates_attachment_content_type :avatar, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
-	has_many :tracks
-	has_many :comments, through: :tracks
-	has_many :likes, through: :tracks
-	has_many :follows
+	has_many :tracks, dependent: :destroy
+	has_many :comments, through: :tracks, dependent: :destroy
+	has_many :likes, through: :tracks, dependent: :destroy
+	has_many :follows, dependent: :destroy
 	has_many :followers, through: :follows
 
 	def self.new_with_session(params, session)
@@ -26,8 +26,6 @@ class User < ActiveRecord::Base
   		where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
     		user.email = auth.info.email
     		user.password = Devise.friendly_token[0,20]
-    		# user.name = auth.info.name   # assuming the user model has a name
-    		# user.image = auth.info.image # assuming the user model has an image
   		end
 	end
 

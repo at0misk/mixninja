@@ -41,7 +41,12 @@
     </div>
     <div class="navButton">
     <button type="button" class="btn btn-custom btn-lg" data-toggle="modal" data-target="#editModal">
-        Profile
+          &#9881;
+    </button>
+    </div>
+    <div class="navButton">
+    <button type="button" class="btn btn-custom btn-lg" id="link">
+        <%= link_to "Profile", controller: "users", action: "show", id: current_user[:id] %>
     </button>
     </div>
   	<div class="navButton">
@@ -162,6 +167,11 @@
               <div class="controls">
                 <button id="confirmsignup" name="confirmsignup" class="btn btn-custom">Save Changes</button>
               </div>
+            </div>
+              <form action='/users/:id' method='post' data-method='delete'>              
+                <!-- <button id="deleteprofile" name="deleteprofile" class="btn btn-danger" >Delete Profile</button> -->
+                <%= button_to 'Destroy', {action: :destroy, id: current_user.id, :class => "btn btn-danger"},  onclick: 'return confirm("Are you sure?")', method: :delete %>      
+              </form>
             </div>
             </fieldset>
             </form>

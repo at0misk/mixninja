@@ -30,8 +30,14 @@ Rails.application.routes.draw do
   post 'comments' => 'comments#create'
 
   post 'tracks' => 'tracks#create'
+  post 'like' => 'likes#create'
+  delete 'like' => 'likes#destroy'
   get 'tracks' => 'tracks#index'
 
+  delete 'tracks' => 'tracks#destroy'
+  delete 'users/:id' => 'users#destroy'
+  get 'dashboard' => 'dashboard#index'
+  post 'comments' => 'comments#create'
   get 'users/:id' => 'users#show'
   get 'tracks/:id' => 'tracks#show'
   patch 'users/:id' => 'users#update'

@@ -24,5 +24,4 @@ end
 gem 'hirb'
 gem 'selenium-webdriver'
 gem 'json'
-gem 'rails-footnotes', '>= 4.0.0', '<5'
 gem "paperclip", "~> 4.2"

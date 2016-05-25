@@ -22,12 +22,12 @@ Rails.application.routes.draw do
 
   post 'tracks' => 'tracks#create'
   get 'tracks' => 'tracks#index'
+  delete 'tracks' => 'tracks#destroy'
+  get 'dashboard' => 'dashboard#index'
+  post 'comments' => 'comments#create'
   get 'users/:id' => 'users#show'
   get 'tracks/:id' => 'tracks#show'
   patch 'users/:id' => 'users#update'
-  get 'dashboard' => 'dashboard#index'
-
-  post 'comments' => 'comments#create'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

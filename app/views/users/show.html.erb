@@ -4,7 +4,7 @@
 	<div class="row">
 			<div class="col-xs-12" id="profile">
 				<div class="profilePicture">
-					<img class='profilePicture' src='<%= @User.avatar.url   %>' />
+					<img class='profilePicture' src='<%= @User.avatar.url   %>'></img>
 				</div>
 				<div class="profileInfo">
 				<span class="userAlias"><%= @User.alias %></span>
@@ -16,18 +16,49 @@
 			</div>
 	</div>
 	<div class="row">
-		<div class="col-xs-8">
-			<h1>Tracks</h1>			
 			<% @User.tracks.each do |t| %>	
+			<!-- Modal -->
+			<% if current_user %>
+			<div class="modal fade" id="deleteModal<%= t.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			        <h4 class="modal-title" id="myModalLabel">Delete <%= t.title %>?</h4>
+			      </div>
+			      <div class="modal-body">
+			      		<form action='/tracks' method='post'>
+						    <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
+						    <input type='hidden' name='_method' value='delete'>
+						    <input type='hidden' name='id' value='<%= t.id %>'>
+						    <input type="submit" value="Delete">
+						</form>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+			        </form>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+			<% end %>
+			<!-- End Modal -->
+				<div class="col-xs-12">	
 				<div class="track">			
-					<div id="waveform<%= t.id %>"></div>
-						<div class="control">
+						<h1><a href="/tracks/<%= t.id %>"><%= t.title %></a></h1>
+							<h3><%= t.desc %></h3>
+							<div id="waveform<%= t.id %>"></div>
+							<div class="control">
 							 <button class="btn btn-primary" onclick="wavesurfer<%= t.id %>.playPause()">
 								<i class="glyphicon glyphicon-play"></i>
 			    				Play
 			  				</button>
-							<p><a href="/tracks/<%= t.id %>"><%= t.title %></a></p>
-							<p><%= t.desc %></p>
+			  				<% if current_user[:id] == @User.id %>
+							<button type="button" class="btn btn-primary " data-toggle="modal" data-target="#deleteModal<%= t.id %>">
+					  			Delete
+							</button>
+							<% end %>
 						</div>
 					<script type="text/javascript">
 						var wavesurfer<%= t.id %> = WaveSurfer.create({
@@ -42,8 +73,7 @@
 						wavesurfer<%= t.id %>.load('<%= t.avatar.url %>');
 					</script>
 				</div>
-			<% end %>			
-		</div>
+			</div>
+		<% end %>			
 	</div>
 </div>
-<%= current_user[:id] %>

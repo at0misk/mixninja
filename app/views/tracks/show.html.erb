@@ -2,7 +2,7 @@
 	<div class="row">
 		<div class="col-xs-12">
 			<h1><%= @Track.title %></h1>
-			<h3>By: <a href="/users/<%= @Track.user.id %>"><%= @Track.user.first_name %> <%= @Track.user.last_name %></a></h3>
+			<h3>By: <a href="/users/<%= @Track.user.id %>"><%= @Track.user.alias %></a></h3>
 			<p><%= @Track.desc %></p>
 
 			<div class="track">
@@ -11,7 +11,12 @@
 							 <button class="btn btn-primary" onclick="wavesurfer.playPause()">
 								<i class="glyphicon glyphicon-play"></i>
 			    				Play
-			  				</button>							
+			  				</button>
+			  				<% if current_user[:id] == @Track.user.id %>
+							<button type="button" class="btn btn-primary " data-toggle="modal" data-target="#deleteModal<%= @Track.id %>">
+					  			Delete
+							</button>
+							<% end %>							
 						</div>
 					<script type="text/javascript">
 						var wavesurfer = WaveSurfer.create({
@@ -34,7 +39,7 @@
 				<% if @Track.comments %>
 					<% @Track.comments.each do |c| %>
 					<p><%= c.content %></p>
-					<p>By: <a href="/users/<%= c.user.id %>"><%= c.user.first_name %> <%= c.user.last_name %></a></p>
+					<p><div class="profilePictureSmall"><img class='profilePictureSmall' src='<%= c.user.avatar.url   %>'></img></div> <a href="/users/<%= c.user.id %>"><%= c.user.alias %></a></p>
 					<% end %>
 				<% end %>
 			</div>
@@ -49,3 +54,30 @@
 		</div>
 	</div>
 </div>
+<!-- Modal -->
+	<% if current_user %>
+	<div class="modal fade" id="deleteModal<%= @Track.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel">Delete <%= @Track.title %>?</h4>
+	      </div>
+	      <div class="modal-body">
+	      		<form action='/tracks' method='post'>
+				    <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
+				    <input type='hidden' name='_method' value='delete'>
+				    <input type='hidden' name='id' value='<%= @Track.id %>'>
+				    <input type="submit" value="Delete">
+				</form>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+	        </form>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	<% end %>
+<!-- End Modal -->

@@ -6,6 +6,6 @@
     </div>
 
 	<ul>
-        <li ng-repeat="trend in trends | filter:filter_name">{{ trend.firstName }} {{ trend.lastName }}</li>
+        <li ng-repeat="trend in trends | filter:filter_name"><a href="/tracks/{{trend.id}}"> {{ trend.title }} </a> - {{ trend.desc }}</li>
     </ul>
  </div>

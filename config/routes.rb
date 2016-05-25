@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   post 'tracks' => 'tracks#create'
   get 'tracks' => 'tracks#index'
   delete 'tracks' => 'tracks#destroy'
+  delete 'users/:id' => 'users#destroy'
   get 'dashboard' => 'dashboard#index'
   post 'comments' => 'comments#create'
   get 'users/:id' => 'users#show'

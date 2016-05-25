@@ -43,7 +43,7 @@
     </button>
     </div>
   	<div class="navButton">
-		<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+		<button type="button" class="btn btn-custom btn-lg" data-toggle="modal" data-target="#myModal">
   			Upload
 		</button>
     </div>
@@ -153,7 +153,7 @@
               <div class="controls">
                 <input id="tagline" name="user[avatar]" class="form-control" type="file" class="input-large" value='<%= current_user[:avatar] %>'>
               </div>
-              <img class='profilePicture' src='<%= current_user.avatar.url   %>'></img>
+              <img class='profilePicture' src='<%= current_user.avatar.url   %>' />
             </div>           
             <div class="control-group">
               <label class="control-label" for="confirmsignup"></label>

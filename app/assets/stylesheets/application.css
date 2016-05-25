@@ -71,14 +71,13 @@ background: linear-gradient(to left, #673AB7 , #512DA8); /* W3C, IE 10+/ Edge, F
 
 
 
-
-
-
-
-
-
 .buffer {
 	margin-top: 5%;
+}
+
+a:visited, a:link {
+  text-decoration: none;
+  color: #4B0082;
 }
 
 

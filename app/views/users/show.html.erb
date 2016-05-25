@@ -9,9 +9,9 @@
 				<div class="profileInfo">
 				<span class="userAlias"><%= @User.alias %></span>
 				<span class="userName"><%= @User.first_name %> <%= @User.last_name %></span>
-				<span class="userField"><%= @User.email %></span>
-				<span class="userField">Location: <%= @User.location %></span>
 				<span class="userField">"<%= @User.tagline %>"</span>
+				<span class="userField"><%= @User.email %></span>
+				<span class="userField"><%= @User.location %></span>
 				</div>
 			</div>
 	</div>
@@ -47,7 +47,7 @@
 				<div class="col-xs-12">	
 				<div class="track">			
 						<h1><a href="/tracks/<%= t.id %>"><%= t.title %></a></h1>
-							<h3><%= t.desc %></h3>
+							<h3><span class="desc"><%= t.desc %></span></h3>
 							<div id="waveform<%= t.id %>"></div>
 							<div class="control">
 							 <button class="btn btn-custom" onclick="wavesurfer<%= t.id %>.playPause()">
@@ -55,11 +55,11 @@
 			    				Play
 			  				</button>
 			  				<% if current_user[:id] == @User.id %>
-							<button type="button" class="btn btn-custom " data-toggle="modal" data-target="#deleteModal<%= t.id %>">
+							<button type="button" class="btn btn-custom" id="track" data-toggle="modal" data-target="#deleteModal<%= t.id %>">
 					  			Delete
 							</button>
 							<% end %>
-						</div>
+						</div>s
 					<script type="text/javascript">
 						var wavesurfer<%= t.id %> = WaveSurfer.create({
 							barWidth: 1,

@@ -31,7 +31,9 @@ Rails.application.routes.draw do
 
   post 'tracks' => 'tracks#create'
   post 'like' => 'likes#create'
+  post 'follows' => 'follows#create'
   delete 'like' => 'likes#destroy'
+  delete 'follows' => 'follows#destroy'
   get 'tracks' => 'tracks#index'
 
   delete 'tracks' => 'tracks#destroy'

@@ -14,6 +14,25 @@
 				<span class="userField">"<%= @User.tagline %>"</span>
 				</div>
 			</div>
+			<% if @User.id == current_user[:id] %>
+			<% else %>
+				<% if @Follows.exists?(user_id: current_user[:id]) %>
+				<form action='/follows' method='post'>
+				    <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
+				    <input type='hidden' name='_method' value='delete'>
+				    <input type='hidden' name='follow[user_id]' value='<%= current_user[:id] %>'>
+				    <input type='hidden' name='follow[follow_id]' value='<%= @User.id %>'>
+				    <input type="submit" value="Unfollow">
+				</form>
+				<% else %>
+				<form action='/follows' method='post'>
+				    <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
+				    <input type='hidden' name='follow[user_id]' value='<%= current_user[:id] %>'>
+				    <input type='hidden' name='follow[follow_id]' value='<%= @User.id %>'>
+				    <input type="submit" value="Follow">
+				</form>
+				<% end %>
+			<% end %>
 	</div>
 	<div class="row">
 			<% @User.tracks.each do |t| %>	
@@ -52,7 +71,7 @@
 							<div class="control">
 							 <button class="btn btn-primary" onclick="wavesurfer<%= t.id %>.playPause()">
 								<i class="glyphicon glyphicon-play"></i>
-			    				Play
+			    				Play/Pause
 			  				</button>
 			  				<% if current_user[:id] == @User.id %>
 							<button type="button" class="btn btn-primary " data-toggle="modal" data-target="#deleteModal<%= t.id %>">
@@ -64,13 +83,26 @@
 						var wavesurfer<%= t.id %> = WaveSurfer.create({
 							barWidth: 1,
 							fillParent: true,
-							progressColor: 'green',
-							waveColor: 'orange',
+							progressColor: 'blue',
+							waveColor: 'purple',
 							container: '#waveform<%= t.id %>',
 							backend: 'MediaElement',
 							scrollParent: true
 						});
 						wavesurfer<%= t.id %>.load('<%= t.avatar.url %>');
+						$(document).ready(function(){
+							wavesurfer<%= t.id %>.on('audioprocess', function(){
+								var current = wavesurfer<%= t.id %>.getCurrentTime()
+								var d = moment.duration(current, 'seconds')
+								var hours = ("0" + d.hours()).slice(-2);
+								var minutes = ("0" + d.minutes()).slice(-2);
+								var seconds = ("0" + d.seconds()).slice(-2);
+								var milli = ("0" + Math.floor(d.milliseconds())).slice(-2);
+								$('#time').html( hours + ": " + minutes + ": " + seconds + ": " + milli);
+							});
+						});
+					</script>
+					<h3>Playback: <span id="time">00: 00: 00: 00</span></h3>
 					</script>
 				</div>
 			</div>

@@ -11,8 +11,8 @@
 				<div id="waveform"></div>
 						<div class="control">
 							 <button class="btn btn-primary" onclick="wavesurfer.playPause()">
-								<i class="glyphicon glyphicon-play"></i>
-			    				Play
+							 	<i class="glyphicon glyphicon-play"></i>
+			    				Play/Pause
 			  				</button>
 			  				<% if current_user[:id] == @Track.user.id %>
 							<button type="button" class="btn btn-primary " data-toggle="modal" data-target="#deleteModal<%= @Track.id %>">
@@ -24,14 +24,27 @@
 						var wavesurfer = WaveSurfer.create({
 							barWidth: 1,
 							fillParent: true,
-							progressColor: 'green',
-							waveColor: 'orange',
+							progressColor: 'blue',
+							waveColor: 'purple',
 							container: '#waveform',
 							backend: 'MediaElement',
 							scrollParent: true
 						});
 						wavesurfer.load('<%= @Track.avatar.url %>');
+						// wavesurfer.getCurrentTime();
+						$(document).ready(function(){
+							wavesurfer.on('audioprocess', function(){
+								var current = wavesurfer.getCurrentTime()
+								var d = moment.duration(current, 'seconds')
+								var hours = ("0" + d.hours()).slice(-2);
+								var minutes = ("0" + d.minutes()).slice(-2);
+								var seconds = ("0" + d.seconds()).slice(-2);
+								var milli = ("0" + Math.floor(d.milliseconds())).slice(-2);
+								$('#time').html( hours + ": " + minutes + ": " + seconds + ": " + milli);
+							});
+						});
 					</script>
+					<h3>Playback: <span id="time">00: 00: 00: 00</span></h3>
 			</div>
 			<% if @Likes.exists?(user_id: current_user[:id]) %>
 			<form action="/like" method="post">

@@ -14,6 +14,10 @@ class TracksController < ApplicationController
 		end
 		redirect_to :back
 	end
+	def destroy
+		Track.find(params[:id]).destroy
+		redirect_to :back
+	end
 	def track_params
   		params.require(:track).permit(:title, :desc, :user_id, :avatar)
 	end

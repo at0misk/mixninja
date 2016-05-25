@@ -3,10 +3,7 @@
 <head>
   <title>Mixninja</title>
 
-   <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.min.js" %>
-   <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular-route.min.js" %>
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
  <script src="js/main.js"></script>
   
 
@@ -37,16 +34,21 @@
 <% if current_user %>
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container">
-
+   <div class="navButton">
+     <button class="btn btn-custom btn-lg" id="link"><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></button>        
+    </div>
+    <div class="navButton">
+    <button type="button" class="btn btn-custom btn-lg" data-toggle="modal" data-target="#editModal">
+        Profile
+    </button>
+    </div>
   	<div class="navButton">
 		<button type="button" class="btn btn-custom btn-lg" data-toggle="modal" data-target="#myModal">
   			Upload
 		</button>
     </div>
-  	
-    <div class="navButton">
-		 <button class="btn btn-custom btn-lg" id="link"><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></button>        
-    </div>
+    
+
   </div>
 </nav>
 
@@ -89,6 +91,93 @@
     </div>
   </div>
 </div>
+
+<!-- edit profile modal -->
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Edit Profile</h4>
+      </div>
+      <div class="modal-body">
+          <form class="form-horizontal" action="/users/<%= current_user[:id] %>" method="post" class="edit_user" id="edit_user" enctype="multipart/form-data">
+          <input type="hidden"name="_method" value="patch">
+            <fieldset>
+            <!-- Sign Up Form -->
+            <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+            <!-- Text input-->
+            <div class="control-group">
+              <label class="control-label" for="first_name">First Name:</label>
+              <div class="controls">
+                <input id="first_name" name="user[first_name]" class="form-control" type="text" placeholder="Jonny" class="input-large" required="" value='<%= current_user[:first_name] %>'>
+              </div>
+            </div>    
+            <div class="control-group">
+              <label class="control-label" for="Email">Last Name:</label>
+              <div class="controls">
+                <input id="last_name" name="user[last_name]" class="form-control" type="text" placeholder="Rotten" class="input-large" required="" value='<%= current_user[:last_name] %>'>
+              </div>
+            </div>
+
+               <div class="control-group">
+              <label class="control-label" for="alias">Alias:</label>
+              <div class="controls">
+                <input id="alias" name="user[alias]" class="form-control" type="text" placeholder="Deadpool" class="input-large" required="" value='<%= current_user[:alias] %>'>
+              </div>
+            </div>
+
+             <div class="control-group">
+              <label class="control-label" for="email">Email:</label>
+              <div class="controls">
+                <input id="email" name="user[email]" class="form-control" type="text" placeholder="boaty@mcboatface.com" class="input-large" required="" value='<%= current_user[:email] %>'>
+              </div>
+            </div>
+
+
+               <div class="control-group">
+              <label class="control-label" for="location">Location</label>
+              <div class="controls">
+                <input id="location" name="user[location]" class="form-control" type="text" placeholder="Space" class="input-large" required="" value='<%= current_user[:location] %>'>
+              </div>
+            </div>
+
+             <div class="control-group">
+              <label class="control-label" for="tagline">Tagline:</label>
+              <div class="controls">
+                <input id="tagline" name="user[tagline]" class="form-control" type="text" placeholder="I eat turtles" class="input-large" required="" value='<%= current_user[:tagline] %>'>
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label" for="tagline">Avatar</label>
+              <div class="controls">
+                <input id="tagline" name="user[avatar]" class="form-control" type="file" class="input-large" value='<%= current_user[:avatar] %>'>
+              </div>
+              <img class='profilePicture' src='<%= current_user.avatar.url   %>' />
+            </div>           
+            <div class="control-group">
+              <label class="control-label" for="confirmsignup"></label>
+              <div class="controls">
+                <button id="confirmsignup" name="confirmsignup" class="btn btn-custom">Save Changes</button>
+              </div>
+            </div>
+            </fieldset>
+            </form>
+
+
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <% end %>
 <%= yield %>
 

@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   # root 'users#index'
 
   get 'tracks' => 'tracks#index'
-
+   delete 'tracks' => 'tracks#destroy'
   get 'dashboard' => 'dashboard#index'
   get 'dashboard/show' => 'dashboard#show'
   get 'trending' => 'trending#index'
@@ -31,10 +31,11 @@ Rails.application.routes.draw do
 
   post 'tracks' => 'tracks#create'
   get 'tracks' => 'tracks#index'
+
   get 'users/:id' => 'users#show'
   get 'tracks/:id' => 'tracks#show'
+  patch 'users/:id' => 'users#update'
 
- 
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -170,7 +170,7 @@
 
           <div class="tab-pane fade" id="signup">
 
-            <form class="form-horizontal" action="/users" method="post" class="new_user" id="new_user">
+            <form class="form-horizontal" action="/users" method="post" class="new_user" id="new_user" enctype="multipart/form-data">
             <fieldset>
             <!-- Sign Up Form -->
             <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
@@ -218,7 +218,12 @@
                 <input id="tagline" name="user[tagline]" class="form-control" type="text" placeholder="I eat turtles" class="input-large" required="">
               </div>
             </div>
-
+            <div class="control-group">
+              <label class="control-label" for="tagline">Avatar</label>
+              <div class="controls">
+                <input id="tagline" name="user[avatar]" class="form-control" type="file" class="input-large" required="">
+              </div>
+            </div>
          
             <div class="control-group">
               <label class="control-label" for="password">Password:</label>

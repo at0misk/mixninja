@@ -6,10 +6,25 @@
 			<p><%= @Track.desc %></p>
 
 			<div class="track">
-				<audio controls>
-  					<source src="<%= @Track.avatar.url %>" type="audio/mpeg">
-					Your browser does not support the audio element.
-				</audio>
+				<div id="waveform"></div>
+						<div class="control">
+							 <button class="btn btn-primary" onclick="wavesurfer.playPause()">
+								<i class="glyphicon glyphicon-play"></i>
+			    				Play
+			  				</button>							
+						</div>
+					<script type="text/javascript">
+						var wavesurfer = WaveSurfer.create({
+							barWidth: 1,
+							fillParent: true,
+							progressColor: 'green',
+							waveColor: 'orange',
+							container: '#waveform',
+							backend: 'MediaElement',
+							scrollParent: true
+						});
+						wavesurfer.load('<%= @Track.avatar.url %>');
+					</script>
 			</div>
 			<div class="track">
 				Track List

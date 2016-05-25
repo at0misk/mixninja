@@ -21,6 +21,8 @@ Rails.application.routes.draw do
   get 'tracks' => 'tracks#index'
 
   post 'tracks' => 'tracks#create'
+  post 'like' => 'likes#create'
+  delete 'like' => 'likes#destroy'
   get 'tracks' => 'tracks#index'
   delete 'tracks' => 'tracks#destroy'
   get 'dashboard' => 'dashboard#index'

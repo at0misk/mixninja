@@ -3,6 +3,7 @@ class TracksController < ApplicationController
 	end
 	def show
 		@Track = Track.find(params[:id])
+		@Likes = Like.where(track_id: params[:id])
 	end
 	def create
 		@Track = Track.new(track_params)

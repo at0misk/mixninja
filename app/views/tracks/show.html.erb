@@ -76,15 +76,6 @@
 						</form>
 					<% end %>
 					</div>
-
-			</div>
-
-			<div class='tracklist'>
-				<% @tracklist.each do |track| %>
-				<% track.tracks.each do |t| %>
-					<%=  t  %>
-				<% end %>
-			<% end %>
 			</div>
 			<% if @Likes.exists?(user_id: current_user[:id]) %>
 			<form action="/like" method="post">
@@ -108,6 +99,28 @@
 			<h3 class="show">Track List</h3>
 
 			<div class="track">
+				<% @tracklist.each do |track| %>
+					
+					<br>
+					<br>
+					<% track.tracks.each_with_index do |t, idx| %>
+						
+						<% if idx.odd? %>
+						odd
+						<%= t[1] %>,<%= idx %>
+						<br>
+						<% end %>
+						
+						<% if idx.even? %>
+						even
+							<%= t[1] %>,<%= idx %>
+							<br>
+						<% end %>
+						
+					<% end %>
+					
+				<% end %>
+
 			</div>
 
 			<h3 class="show">Comments</h3>

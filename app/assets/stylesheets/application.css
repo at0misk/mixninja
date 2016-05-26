@@ -29,8 +29,13 @@
 
 .navTitle {
   color: white;
-  margin-left: -189px;
+  margin-left: -16%;
   font-family: Futura,"Trebuchet MS",Arial,sans-serif
+}
+
+.navTitle a:link, .navTitle a:visited {
+  color: white;
+
 }
 
 .navbar {

@@ -29,4 +29,8 @@ class User < ActiveRecord::Base
   		end
 	end
 
+	def tracks_by_people_you_follow
+		User.find_by_sql("SELECT tracks.title, tracks.id FROM users LEFT JOIN follows ON users.id = follows.user_id LEFT JOIN tracks ON follows.follow_id = tracks.user_id  WHERE users.id = 3")
+	end
+
 end

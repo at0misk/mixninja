@@ -6,6 +6,6 @@
     </div>
 
     <ul>
-        <li ng-repeat="new in newReleases | filter:filter_name"><a href="/tracks/{{new.id}}"> {{new.title}}</a></li>
+        <li ng-repeat="new in newReleases | filter:filter_name"><a href="/tracks/{{new.id}}"> {{new.title}}</a> - {{new.desc}}</li>
     </ul>
 </div>

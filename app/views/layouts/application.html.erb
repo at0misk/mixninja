@@ -37,7 +37,7 @@
   <div class="container">
 
     <div class="navTitle">
-     <h1>MixNinja</h1>      
+     <h1><a href="/dashboard">MixNinja</a></h1>      
     </div>
 
    <div class="navButton">
@@ -203,7 +203,7 @@
         <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
         </form>
          <form action='/users/:id' method='post' data-method='delete'>                            
-              <%= button_to 'Destroy', {action: :destroy, id: current_user.id},  onclick: 'return confirm("Are you sure?")', method: :delete, :class => "btn btn-purple f" %>      
+              <%= button_to 'Destroy', {action: :destroy, controller: :users, id: current_user.id},  onclick: 'return confirm("Are you sure?")', method: :delete, :class => "btn btn-purple f" %>      
           </form>
       </div>
     </div>

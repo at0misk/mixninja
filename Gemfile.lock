@@ -235,7 +235,11 @@ DEPENDENCIES
   paperclip (~> 4.2)
   pg
   rails (= 4.2.0)
+<<<<<<< HEAD
   rails-footnotes
+=======
+  rails-footnotes (>= 4.0.0, < 5)
+>>>>>>> origin/master
   rename
   rspec-rails
   sass-rails (~> 4.0.3)
@@ -246,4 +250,4 @@ DEPENDENCIES
   uglifier (>= 1.3.0)
 
 BUNDLED WITH
-   1.12.4
+   1.12.5

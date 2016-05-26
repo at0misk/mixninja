@@ -1,18 +1,21 @@
+<div id="wrapper">
 <div class="container">
 	<div class="buffer">
 	</div>
 	<div class="row">
 		<div class="col-xs-12">
-			<h1><%= @Track.title %></h1>
-			<h3>By: <a href="/users/<%= @Track.user.id %>"><%= @Track.user.alias %></a></h3>
-			<p><%= @Track.desc %></p>
+			<p id="track_title"><%= @Track.title %></h1>
+			<h3>By <a href="/users/<%= @Track.user.id %>"><%= @Track.user.alias %></a></h3>
+			<p class="userField avant" style="color:black"><%= @Track.desc %></p>
 
 			<div class="track">
 				<div id="waveform"></div>
 						<div class="control">
-							 <button class="btn btn-custom" onclick="wavesurfer.playPause()">
-								<i class="glyphicon glyphicon-play"></i>
-			    				Play
+							 <button class="btn btn-custom" id="play" onclick="wavesurfer.playPause()">
+
+							 	<i class="glyphicon glyphicon-play"></i>
+			    				Play/Pause
+
 			  				</button>
 			  				<% if current_user[:id] == @Track.user.id %>
 							<button type="button" class="btn btn-custom" data-toggle="modal" data-target="#deleteModal<%= @Track.id %>">
@@ -24,15 +27,58 @@
 						var wavesurfer = WaveSurfer.create({
 							barWidth: 1,
 							fillParent: true,
-							progressColor: 'green',
-							waveColor: 'orange',
+							progressColor: 'blue',
+							waveColor: 'purple',
 							container: '#waveform',
 							backend: 'MediaElement',
 							scrollParent: true
 						});
 						wavesurfer.load('<%= @Track.avatar.url %>');
+						// wavesurfer.getCurrentTime();
+						$(document).ready(function(){
+							wavesurfer.on('audioprocess', function(){
+								var current = wavesurfer.getCurrentTime()
+								var d = moment.duration(current, 'seconds')
+								var hours = ("0" + d.hours()).slice(-2);
+								var minutes = ("0" + d.minutes()).slice(-2);
+								var seconds = ("0" + d.seconds()).slice(-2);
+								var milli = ("0" + Math.floor(d.milliseconds())).slice(-2);
+								$('#time').html( hours + ": " + minutes + ": " + seconds + ": " + milli);
+							});
+							$('#play').click(function(){
+								$('#icon').find('i').toggleClass("glyphicon-play").toggleClass("glyphicon-pause");
+								$(this).text(function(i, v){
+									return v === 'Play' ? 'Pause' : 'Play';
+								});
+							});
+						});
 					</script>
+
+					<p class="playback">Playback: <span id="time">00: 00: 00: 00</span></p>
+
+					<div id="likes">
+					<h4 class="like"><span class="purple"><%= @Likes.count %></span> Likes</h4>
+
+					<% if @Likes.exists?(user_id: current_user[:id]) %>
+						<form action="/like" method="post" class="like">
+							<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+							<input type='hidden' name='_method' value='delete'>
+							<input type="hidden" name="like[user_id]" value="<%= current_user[:id] %>">
+							<input type="hidden" name="like[track_id]" value="<%= @Track.id %>">
+							<input type="submit" class="btn btn-purple" value="Unlike">
+						</form>
+						<% else %>
+						<form action="/like" method="post" class="like like2">
+							<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+							<input type="hidden" name="like[user_id]" value="<%= current_user[:id] %>">
+							<input type="hidden" name="like[track_id]" value="<%= @Track.id %>">
+							<input type="submit" class="btn btn-purple" value="Like">
+						</form>
+					<% end %>
+					</div>
+
 			</div>
+
 			<div class='tracklist'>
 				<% @tracklist.each do |track| %>
 				<% track.tracks.each do |t| %>
@@ -57,26 +103,33 @@
 			</form>
 			<% end %>
 			<h4>Likes: <%= @Likes.count %></h4>
+
+		
+			<h3 class="show">Track List</h3>
+
 			<div class="track">
-				Track List
 			</div>
-			<div class="track">
-				Comments
+
+			<h3 class="show">Comments</h3>
+			<div class="track comments">
 					<% @Track.comments.each do |c| %>
-					<p><div class="profilePictureSmall"><img class='profilePictureSmall' src='<%= c.user.avatar.url   %>'></img></div> <a href="/users/<%= c.user.id %>"><%= c.user.alias %></a></p>
+					<p class="user"><div class="profilePictureSmall"><img class='profilePictureSmall' src='<%= c.user.avatar.url   %>'></img></div> <a href="/users/<%= c.user.id %>"><%= c.user.alias %></a></p>
 					<p><%= c.content %></p>
 				<% end %>
 			</div>
+
+			<h3 class="show">Add Comment </h3>
 			<form action="/comments" method="post" class="commentForm">
-				<h3>Add A Comment:</h3>
 				<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 				<input name="comment[track_id]" value="<%= @Track.id %>" type="hidden">
 				<input name="comment[user_id]" value="<%= current_user[:id] %>" type="hidden">
 				<textarea name="comment[content]" class="commentBox"></textarea>
-				<p><input type="submit" class="btn btn-purple" value="Comment"></p>
+				<p><input type="submit" id="comment_butt" class="btn btn-purple" value="Comment"></p>
 			</form>
 		</div>
 	</div>
+	</div>
+</div>
 </div>
 <!-- Modal -->
 	<% if current_user %>

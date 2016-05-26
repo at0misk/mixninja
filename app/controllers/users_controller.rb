@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 
 	def show
 		@User = User.find(params[:id])
+		@Follows = Follow.where(follow_id: params[:id])
 
 	end
 

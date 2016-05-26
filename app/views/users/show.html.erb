@@ -86,6 +86,26 @@
 					  			Delete
 							</button>
 							<% end %>
+							<div id="likes">
+							<h4 class="like"><span class="purple"><%= t.likes.count %></span> Likes</h4>
+
+							<% if t.likes.exists?(user_id: current_user[:id]) %>
+								<form action="/like" method="post" class="like">
+									<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+									<input type='hidden' name='_method' value='delete'>
+									<input type="hidden" name="like[user_id]" value="<%= current_user[:id] %>">
+									<input type="hidden" name="like[track_id]" value="<%= t.id %>">
+									<input type="submit" class="btn btn-purple" value="Unlike">
+								</form>
+								<% else %>
+								<form action="/like" method="post" class="like like2">
+									<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+									<input type="hidden" name="like[user_id]" value="<%= current_user[:id] %>">
+									<input type="hidden" name="like[track_id]" value="<%= t.id %>">
+									<input type="submit" class="btn btn-purple" value="Like">
+								</form>
+							<% end %>
+							</div>
 						</div>
 					<script type="text/javascript">
 						var wavesurfer<%= t.id %> = WaveSurfer.create({
@@ -130,9 +150,9 @@
 						});
 					</script>
 					<h3>Playback: <span id="time<%= t.id %>">00: 00: 00: 00</span></h3>
-					<h1><span class="1<%= t.id %>">1</span>
-					<span class="2<%= t.id %>">2</span>
-					<span class="3<%= t.id %>">3</span></h1>
+					<h4><span class="1<%= t.id %>">1. This is the first track</span></h4>
+					<h4><span class="2<%= t.id %>">2. Middle Track</span></h4>
+					<h4><span class="3<%= t.id %>">3. Finale track!!</span></h4>
 					</script>
 				</div>
 			</div>

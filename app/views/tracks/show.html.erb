@@ -84,23 +84,6 @@
 				<% end %>
 			<% end %>
 			</div>
-			<% if @Likes.exists?(user_id: current_user[:id]) %>
-			<form action="/like" method="post">
-				<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-				<input type='hidden' name='_method' value='delete'>
-				<input type="hidden" name="like[user_id]" value="<%= current_user[:id] %>">
-				<input type="hidden" name="like[track_id]" value="<%= @Track.id %>">
-				<input type="submit" value="Unlike">
-			</form>
-			<% else %>
-			<form action="/like" method="post">
-				<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-				<input type="hidden" name="like[user_id]" value="<%= current_user[:id] %>">
-				<input type="hidden" name="like[track_id]" value="<%= @Track.id %>">
-				<input type="submit" value="Like">
-			</form>
-			<% end %>
-			<h4>Likes: <%= @Likes.count %></h4>
 
 		
 			<h3 class="show">Track List</h3>

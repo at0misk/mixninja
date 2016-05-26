@@ -77,7 +77,7 @@
 							<h3><span class="desc"><%= t.desc %></span></h3>
 							<div id="waveform<%= t.id %>"></div>
 							<div class="Pcontrol">
-							 <button class="btn btn-custom" onclick="wavesurfer<%= t.id %>.playPause()">
+							 <button id="profPlay<%= t.id %>" class="btn btn-custom" onclick="wavesurfer<%= t.id %>.playPause()">
 							 	<span id="pIcon<%= t.id %>"><i class="glyphicon glyphicon-play"></i></span>
 			    				<span id="pPlay<%= t.id %>">Play</span>
 			  				</button>
@@ -106,17 +106,33 @@
 								var minutes = ("0" + d.minutes()).slice(-2);
 								var seconds = ("0" + d.seconds()).slice(-2);
 								var milli = ("0" + Math.floor(d.milliseconds())).slice(-2);
-								$('#time<%= t.id %>').html( hours + ": " + minutes + ": " + seconds + ": " + milli);
+								var fullTime = (hours + ": " + minutes + ": " + seconds + ": " + milli)
+								$('#time<%= t.id %>').html(hours + ": " + minutes + ": " + seconds + ": " + milli);
+								console.log(fullTime);
+								if (fullTime >= "00: 00: 00: 00" && fullTime <= "00: 00: 05: 00"){
+									$('.1<%= t.id %>').addClass("yellow")
+								};
+								if (fullTime >= "00: 00: 05: 00" && fullTime <= "00: 00: 08: 00"){
+									$('.1<%= t.id %>').removeClass("yellow")									
+									$('.2<%= t.id %>').addClass("yellow")
+								};
+								if (fullTime >= "00: 00: 08: 00"){
+									$('.2<%= t.id %>').removeClass("yellow")									
+									$('.3<%= t.id %>').addClass("yellow")
+								};
 							});
-							$('#pPlay<%= t.id %>').click(function(){
+							$('#profPlay<%= t.id %>').click(function(){
 								$('#pIcon<%= t.id %>').find('i').toggleClass("glyphicon-play").toggleClass("glyphicon-pause");
-								$(this).text(function(i, v){
+								$('#pPlay<%= t.id %>').text(function(i, v){
 									return v === 'Play' ? 'Pause' : 'Play';
 								});
 							});
 						});
 					</script>
-					<p class="playback">Playback: <span id="time<%= t.id %>">00: 00: 00: 00</p>
+					<h3>Playback: <span id="time<%= t.id %>">00: 00: 00: 00</span></h3>
+					<h1><span class="1<%= t.id %>">1</span>
+					<span class="2<%= t.id %>">2</span>
+					<span class="3<%= t.id %>">3</span></h1>
 					</script>
 				</div>
 			</div>

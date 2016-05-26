@@ -9,12 +9,13 @@
 }
 
 .track {
-	margin-top: 3%;
+	margin-top: 2%;
 	width:70%;
 	display: block;
   border: 1px solid silver;
   padding: 26px;
   margin-left: 20px;
+  background-color: white;
 
 -webkit-box-shadow: 2px 3px 14px -8px rgba(0,0,0,0.75);
 -moz-box-shadow: 2px 3px 14px -8px rgba(0,0,0,0.75);
@@ -42,6 +43,7 @@ box-shadow: 2px 3px 14px -8px rgba(0,0,0,0.75);
   font-size: 2.0em;
   display: block;
   font-family: 'Lato', sans-serif;
+  color: grey;
   font-weight: 300;
   line-height: 52px;
   margin-left: 5px;
@@ -70,6 +72,7 @@ h3 {
   border: 1px solid silver;
   padding: 26px;
   box-shadow: 2px 3px 14px -8px rgba(0, 0, 0, 0.75);
+  background: white;
 }
 
 #profileTracks{
@@ -84,6 +87,7 @@ h3 {
 
 #profContainer{
   background: white;
+  padding-bottom: 5%
 }
 
 div.control {
@@ -98,17 +102,29 @@ div.control {
   font-size: 16px;
 }
 
-/* Typed */
+.follow {
+      margin-left: 567px;
+    margin-top: 112px;
+}
+
+.playback {
+  padding-top: 6px;
+  font-size: 17px;
+  font-family: "Avant Garde",Avantgarde,"Century Gothic",CenturyGothic,AppleGothic,sans-serif
+}
+
 
 /* Landing Page */
 
 
 /* general styles */
+
 html, body {
   height: 100%;
   width: 100%;
   background-color: #ebeaea;       
 }
+
 
 /* padded section */
 .pad-section {
@@ -196,22 +212,14 @@ background-image: url("http://www.transparenttextures.com/patterns/asfalt-dark.p
 /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
 }
 
-
-footer {
-  padding: 20px 0;
-  background-color: #403e42;
-background-image: url("http://www.transparenttextures.com/patterns/rough-cloth-light.png");
+.text-center {
+  height: 30%;
 }
+
 
 .text-right {
 	color: white;
 }
 
-footer .glyphicon {
-  color: #333333;
-  font-size: 60px;
-}
-footer .glyphicon:hover {
-  color: #306d9f;
-}
+
 

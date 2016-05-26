@@ -1,6 +1,81 @@
+
+#wrapper {
+  background-image: url("background.jpg");
+  background-repeat: no-repeat;
+}
+
+
+
+
+
 .profilePictureSmall {
     width: 35px;
     height: 25px;
     overflow: hidden;
     display: inline-block;
+}
+
+/* Show Track */
+
+#comment_butt  {
+    margin-left: 232px;
+    margin-top: 15px;
+}
+
+.show {
+	font-size: 19px;
+	font-family: "Avant Garde",Avantgarde,"Century Gothic",CenturyGothic,AppleGothic,sans-serif;
+	margin-bottom: 23px;
+	/*margin-bottom: -13px;*/
+  margin-top: 30px;
+  color: #005885;
+}
+
+
+#track_title {
+  font-size: 3em;
+  display: inline-block;
+  vertical-align: top;
+  font-size: 45px;
+  font-weight: normal;
+  line-height: 48px;
+  color: hsl(200, 100%, 26%);
+
+}
+
+.commentForm {
+	margin-left: 19px;
+}
+
+.user {
+	border: 1px solid silver;
+}
+
+.comments {
+    overflow: auto;
+    height: 350px;
+}
+
+
+.like {
+	display: inline-block;
+	font-family: "Avant Garde",Avantgarde,"Century Gothic",CenturyGothic,AppleGothic,sans-serif;
+}
+
+.like2 {
+	margin-left: 17px;
+	font-size: 10px;
+	font-family: "Avant Garde",Avantgarde,"Century Gothic",CenturyGothic,AppleGothic,sans-serif;
+}
+
+#likes {
+	margin-left: 584px;
+}
+
+.purple {
+	color: #4B0082;
+}
+
+.avant {
+	font-family: "Avant Garde",Avantgarde,"Century Gothic",CenturyGothic,AppleGothic,sans-serif;
 }

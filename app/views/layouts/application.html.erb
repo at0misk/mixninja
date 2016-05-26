@@ -3,8 +3,10 @@
 <head>
   <title>Mixninja</title>
 
+
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
  <script src="js/main.js"></script>
+
 
   <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
@@ -90,30 +92,23 @@
 				<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 				<input name="track[user_id]" value="<%= current_user[:id] %>" type="hidden">
 
-         <div class="control-group">
-              <label class="control-label" for="first_name">Title</label>
-              <div class="controls">
-                <input id="first_name" name="track[title]" class="form-control" type="text" placeholder="White Lines" class="input-large">
-              </div>
-            </div> 
+				<p>Title: <input type="text" name="track[title]"></p>
+				<p>Description: <textarea name="track[desc]" class="commentBox"></textarea>
+				<p>File: <input id="track_avatar" name="track[avatar]" type="file" accept=".mp3,audio/*"></p>
+        <p>Tracks:</p>        
+        <div class="input_fields_wrap">
+          <div>
+            
 
-           <div class="control-group">
-              <label class="control-label" for="tagline">Tagline</label>
-              <div class="controls">
-                <input id="tagline" name="track[desc]" class="form-control" type="text" placeholder="I eat bats" class="input-large">
-              </div>
-            </div>
-
-				<p class="b"><strong>File</strong> <input id="track_avatar" name="track[avatar]" type="file" accept=".mp3,audio/*"></p>
-        <p class="b"><strong>Tracks</strong></p>
-        <div id="field"><input autocomplete="off" class="input" id="field1" name="prof1" type="text" placeholder="Type something" data-items="8"/><button id="b1" class="btn add-more btn-purple" type="button">+</button></div>
-
-				<p class="b"><input type="submit" class="btn btn-custom" value="Upload"></p>
+            <button class="add_field_button">Add New Track</button>
+            <div><span>Track Title</span><input type="text" name="tracklist[track]"/><span>Start Time</span><input type="text" name="tracklist[time]"/></div>            
+          </div>
+        </div>
+				<p><input type="submit" value="Upload"></p>
 			</form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-custom" data-dismiss="modal">Close</button>
-        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </form>
       </div>
     </div>

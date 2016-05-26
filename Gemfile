@@ -12,6 +12,7 @@ gem 'spring',        group: :development
 gem 'rename'
 # Use ActiveModel has_secure_password
 gem 'devise'
+gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'bcrypt', '~> 3.1.7'
 group :test, :development do
@@ -24,5 +25,4 @@ end
 gem 'hirb'
 gem 'selenium-webdriver'
 gem 'json'
-gem 'rails-footnotes', '>= 4.0.0', '<5'
 gem "paperclip", "~> 4.2"

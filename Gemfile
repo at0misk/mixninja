@@ -22,7 +22,6 @@ end
 group :test do
   gem 'capybara'
 end
-gem 'rails-footnotes'
 gem 'hirb'
 gem 'selenium-webdriver'
 gem 'json'

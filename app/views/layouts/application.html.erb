@@ -2,11 +2,8 @@
 <html>
 <head>
   <title>Mixninja</title>
-
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
- <script src="js/main.js"></script>
   
-
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
   <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 
@@ -87,15 +84,20 @@
 				<p>Title: <input type="text" name="track[title]"></p>
 				<p>Description: <textarea name="track[desc]" class="commentBox"></textarea>
 				<p>File: <input id="track_avatar" name="track[avatar]" type="file" accept=".mp3,audio/*"></p>
-        <p>Tracks:</p>
-        <div id="field"><input autocomplete="off" class="input" id="field1" name="prof1" type="text" placeholder="Type something" data-items="8"/><button id="b1" class="btn add-more" type="button">+</button></div>
+        <p>Tracks:</p>        
+        <div class="input_fields_wrap">
+          <div>
+            
 
+            <button class="add_field_button">Add New Track</button>
+            <div><span>Track Title</span><input type="text" name="tracklist[track1]"/><span>Start Time</span><input type="text" name="tracklist[time1]"/></div>            
+          </div>
+        </div>
 				<p><input type="submit" value="Upload"></p>
 			</form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
         </form>
       </div>
     </div>

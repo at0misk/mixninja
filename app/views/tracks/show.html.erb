@@ -33,6 +33,13 @@
 						wavesurfer.load('<%= @Track.avatar.url %>');
 					</script>
 			</div>
+			<div class='tracklist'>
+				<% @tracklist.each do |track| %>
+				<% track.tracks.each do |t| %>
+					<%=  t  %>
+				<% end %>
+			<% end %>
+			</div>
 			<% if @Likes.exists?(user_id: current_user[:id]) %>
 			<form action="/like" method="post">
 				<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">

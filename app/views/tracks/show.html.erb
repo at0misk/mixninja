@@ -41,11 +41,38 @@
 								var minutes = ("0" + d.minutes()).slice(-2);
 								var seconds = ("0" + d.seconds()).slice(-2);
 								var milli = ("0" + Math.floor(d.milliseconds())).slice(-2);
-								$('#time').html( hours + ": " + minutes + ": " + seconds + ": " + milli);
+								var fullTime = (hours + ": " + minutes + ": " + seconds + ": " + milli)
+								$('#time').html(hours + ": " + minutes + ": " + seconds + ": " + milli);
+								console.log(fullTime);
+								<% for i in 0..@timeArr.length-1 %>
+								<% if i == @timeArr.length-1 %>
+								if (fullTime >= "<%= @timeArr[i] %>"){
+								<% else %>
+								if (fullTime >= "<%= @timeArr[i] %>" && fullTime <= "<%= @timeArr[i+1] %>"){
+								<% end %>
+									<% if i != 0 %>
+									$('.<%= i-1 %>').removeClass("yellow");
+									<% end %>
+									$('.<%= i %>').addClass("yellow");
+								};
+								<% end %>
+									
+						
+								// if (fullTime >= "00: 00: 00: 00" && fullTime <= "00: 00: 05: 00"){
+								// 	$('.1').addClass("yellow");
+								// };
+								// if (fullTime >= "00: 00: 05: 00" && fullTime <= "00: 00: 08: 00"){
+								// 	$('.1').removeClass("yellow");									
+								// 	$('.2').addClass("yellow");
+								// };
+								// if (fullTime >= "00: 00: 08: 00"){
+								// 	$('.2').removeClass("yellow");								
+								// 	$('.3').addClass("yellow");
+								// };
 							});
-							$('#trackPlay').click(function(){
-								$('#icon').find('i').toggleClass("glyphicon-play").toggleClass("glyphicon-pause");
-								$('#play').text(function(i, v){
+							$('#profPlay').click(function(){
+								$('#pIcon').find('i').toggleClass("glyphicon-play").toggleClass("glyphicon-pause");
+								$('#pPlay').text(function(i, v){
 									return v === 'Play' ? 'Pause' : 'Play';
 								});
 							});
@@ -80,27 +107,20 @@
 			<h3 class="show">Track List</h3>
 
 			<div class="track">
-				<% @tracklist.each do |track| %>
-					
-					<br>
-					<br>
-					<% track.tracks.each_with_index do |t, idx| %>
-						
-						<% if idx.odd? %>
-						odd
-						<%= t[1] %>,<%= idx %>
-						<br>
-						<% end %>
-						
-						<% if idx.even? %>
-						even
-							<%= t[1] %>,<%= idx %>
-							<br>
-						<% end %>
-						
+					<% num = 0 %>
+					<% idx = 0 %>
+					 <% @tracklist.each do |track| %>
+					<% track.tracks.each_key do |key| %>
+					<% if num.even? %>
+						<h4><span class="<%= idx %>"><%= idx+1 %>. <%= track.tracks[key] %></span></h4>
+						<% idx = idx + 1 %>
+					<% end %>
+					<% num = num + 1 %>
 					<% end %>
 					
 				<% end %>
+
+
 
 			</div>
 

@@ -6,8 +6,8 @@ class Track < ActiveRecord::Base
   # validates_attachment_content_type :avatar, :content_type => { :content_type => ["audio/mpeg", "audio/mp3"] }, :file_name => { :matches => [/mp3\Z/] }
   	# do_not_validate_attachment_file_type :avatar
 	 belongs_to :user
-	 has_many :tracklists
+	 has_many :tracklists, dependent: :destroy
 	 has_many :comments
 	 has_many :likes
-	 
+
 end

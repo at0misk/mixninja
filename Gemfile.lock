@@ -235,11 +235,7 @@ DEPENDENCIES
   paperclip (~> 4.2)
   pg
   rails (= 4.2.0)
-<<<<<<< HEAD
-  rails-footnotes (>= 4.0.0, < 5)
-=======
   rails-footnotes
->>>>>>> origin/master
   rename
   rspec-rails
   sass-rails (~> 4.0.3)

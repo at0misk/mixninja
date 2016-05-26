@@ -5,6 +5,14 @@ class TracksController < ApplicationController
 		@Track = Track.find(params[:id])
 		@Likes = Like.where(track_id: params[:id])		
 		@tracklist = Tracklist.where(track_id: params[:id])
+		num = 3 
+		@timeArr = []
+		for i in 0..@tracklist[0].tracks.to_a.flatten.length 
+			if i == num
+				@timeArr << @tracklist[0].tracks.to_a.flatten[i] 
+				 num += 4 
+			end 
+		end 	
 
 	end
 	def create

@@ -11,8 +11,8 @@
 				<div id="waveform"></div>
 						<div class="control">
 							 <button class="btn btn-primary" onclick="wavesurfer.playPause()">
-							 	<i class="glyphicon glyphicon-play"></i>
-			    				Play/Pause
+							 	<span id="icon"><i class="glyphicon glyphicon-play"></i></span>
+			    				<span id="play">Play</span>
 			  				</button>
 			  				<% if current_user[:id] == @Track.user.id %>
 							<button type="button" class="btn btn-custom" data-toggle="modal" data-target="#deleteModal<%= @Track.id %>">
@@ -41,6 +41,12 @@
 								var seconds = ("0" + d.seconds()).slice(-2);
 								var milli = ("0" + Math.floor(d.milliseconds())).slice(-2);
 								$('#time').html( hours + ": " + minutes + ": " + seconds + ": " + milli);
+							});
+							$('#play').click(function(){
+								$('#icon').find('i').toggleClass("glyphicon-play").toggleClass("glyphicon-pause");
+								$(this).text(function(i, v){
+									return v === 'Play' ? 'Pause' : 'Play';
+								});
 							});
 						});
 					</script>

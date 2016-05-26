@@ -72,10 +72,10 @@
 						<h1><a href="/tracks/<%= t.id %>"><%= t.title %></a></h1>
 							<h3><span class="desc"><%= t.desc %></span></h3>
 							<div id="waveform<%= t.id %>"></div>
-							<div class="control">
+							<div class="Pcontrol">
 							 <button class="btn btn-custom" onclick="wavesurfer<%= t.id %>.playPause()">
-								<i class="glyphicon glyphicon-play"></i>
-			    				Play/Pause
+							 	<span id="pIcon<%= t.id %>"><i class="glyphicon glyphicon-play"></i></span>
+			    				<span id="pPlay<%= t.id %>">Play</span>
 			  				</button>
 			  				<% if current_user[:id] == @User.id %>
 							<button type="button" class="btn btn-custom" id="track" data-toggle="modal" data-target="#deleteModal<%= t.id %>">
@@ -102,11 +102,17 @@
 								var minutes = ("0" + d.minutes()).slice(-2);
 								var seconds = ("0" + d.seconds()).slice(-2);
 								var milli = ("0" + Math.floor(d.milliseconds())).slice(-2);
-								$('#time').html( hours + ": " + minutes + ": " + seconds + ": " + milli);
+								$('#time<%= t.id %>').html( hours + ": " + minutes + ": " + seconds + ": " + milli);
+							});
+							$('#pPlay<%= t.id %>').click(function(){
+								$('#pIcon<%= t.id %>').find('i').toggleClass("glyphicon-play").toggleClass("glyphicon-pause");
+								$(this).text(function(i, v){
+									return v === 'Play' ? 'Pause' : 'Play';
+								});
 							});
 						});
 					</script>
-					<p class="playback">Playback: <span id="time">00: 00: 00: 00</p>
+					<p class="playback">Playback: <span id="time<%= t.id %>">00: 00: 00: 00</p>
 					</script>
 				</div>
 			</div>

@@ -3,8 +3,10 @@
 <head>
   <title>Mixninja</title>
 
+
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
  <script src="js/main.js"></script>
+
 
   <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
@@ -35,6 +37,11 @@
 <% if current_user %>
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container">
+
+    <div class="navTitle">
+     <h1>MixNinja</h1>      
+    </div>
+
    <div class="navButton">
      <button class="btn btn-custom btn-lg" id="link"><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></button>        
     </div>
@@ -79,22 +86,29 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">Upload a Track</h4>
       </div>
+
       <div class="modal-body">
         	<form action="/tracks" method="post" class="trackForm" enctype="multipart/form-data">
 				<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 				<input name="track[user_id]" value="<%= current_user[:id] %>" type="hidden">
+
 				<p>Title: <input type="text" name="track[title]"></p>
 				<p>Description: <textarea name="track[desc]" class="commentBox"></textarea>
 				<p>File: <input id="track_avatar" name="track[avatar]" type="file" accept=".mp3,audio/*"></p>
-        <p>Tracks:</p>
-        <div id="field"><input autocomplete="off" class="input" id="field1" name="prof1" type="text" placeholder="Type something" data-items="8"/><button id="b1" class="btn add-more" type="button">+</button></div>
+        <p>Tracks:</p>        
+        <div class="input_fields_wrap">
+          <div>
+            
 
+            <button class="add_field_button">Add New Track</button>
+            <div><span>Track Title</span><input type="text" name="tracklist[track1]"/><span>Start Time</span><input type="text" name="tracklist[time1]"/></div>            
+          </div>
+        </div>
 				<p><input type="submit" value="Upload"></p>
 			</form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
         </form>
       </div>
     </div>
@@ -117,27 +131,27 @@
             <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
             <!-- Text input-->
             <div class="control-group">
-              <label class="control-label" for="first_name">First Name:</label>
+              <label class="control-label" for="first_name">First Name</label>
               <div class="controls">
                 <input id="first_name" name="user[first_name]" class="form-control" type="text" placeholder="Jonny" class="input-large" required="" value='<%= current_user[:first_name] %>'>
               </div>
             </div>    
             <div class="control-group">
-              <label class="control-label" for="Email">Last Name:</label>
+              <label class="control-label" for="Email">Last Name</label>
               <div class="controls">
                 <input id="last_name" name="user[last_name]" class="form-control" type="text" placeholder="Rotten" class="input-large" required="" value='<%= current_user[:last_name] %>'>
               </div>
             </div>
 
                <div class="control-group">
-              <label class="control-label" for="alias">Alias:</label>
+              <label class="control-label" for="alias">Alias</label>
               <div class="controls">
                 <input id="alias" name="user[alias]" class="form-control" type="text" placeholder="Deadpool" class="input-large" required="" value='<%= current_user[:alias] %>'>
               </div>
             </div>
 
              <div class="control-group">
-              <label class="control-label" for="email">Email:</label>
+              <label class="control-label" for="email">Email</label>
               <div class="controls">
                 <input id="email" name="user[email]" class="form-control" type="text" placeholder="boaty@mcboatface.com" class="input-large" required="" value='<%= current_user[:email] %>'>
               </div>
@@ -152,7 +166,7 @@
             </div>
 
              <div class="control-group">
-              <label class="control-label" for="tagline">Tagline:</label>
+              <label class="control-label" for="tagline">Tagline</label>
               <div class="controls">
                 <input id="tagline" name="user[tagline]" class="form-control" type="text" placeholder="I eat turtles" class="input-large" required="" value='<%= current_user[:tagline] %>'>
               </div>
@@ -167,32 +181,44 @@
             <div class="control-group">
               <label class="control-label" for="confirmsignup"></label>
               <div class="controls">
-                <button id="confirmsignup" name="confirmsignup" class="btn btn-custom">Save Changes</button>
+                <button id="confirmsignup" name="confirmsignup" class="btn btn-custom b">Save Changes</button>
               </div>
+              <div class="control-group">
+              <label class="control-label" for="confirmsignup"></label>
+              <div class="controls">
             </div>
               
             </div>
             </fieldset>
             </form>
-            <form action='/users/:id' method='post' data-method='delete'>                              
-              <%= button_to 'Destroy', {action: :destroy, id: current_user.id},  onclick: 'return confirm("Are you sure?")', method: :delete, :class => "btn btn-danger" %>      
-            </form>
-
-
-
+  
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-custom" data-dismiss="modal">Close</button>
         <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
         </form>
+         <form action='/users/:id' method='post' data-method='delete'>                            
+              <%= button_to 'Destroy', {action: :destroy, id: current_user.id},  onclick: 'return confirm("Are you sure?")', method: :delete, :class => "btn btn-purple f" %>      
+          </form>
       </div>
     </div>
   </div>
 </div>
-
-
 <% end %>
+
+
 <%= yield %>
+
+<!-- footer -->
+<footer>
+  <hr />
+  <div class="container">
+    <p class="text-right">Copyright &copy; CV & K aka Cool Jerks</p>
+  </div>
+</footer>
+<!-- /footer -->
+
+
 
 </body>
 </html>

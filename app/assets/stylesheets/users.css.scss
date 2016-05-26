@@ -7,10 +7,19 @@
     overflow: hidden;
     display: inline-block;
 }
+
 .track {
-	margin-top: 5%;
+	margin-top: 2%;
 	width:70%;
 	display: block;
+  border: 1px solid silver;
+  padding: 26px;
+  margin-left: 20px;
+  background-color: white;
+
+-webkit-box-shadow: 2px 3px 14px -8px rgba(0,0,0,0.75);
+-moz-box-shadow: 2px 3px 14px -8px rgba(0,0,0,0.75);
+box-shadow: 2px 3px 14px -8px rgba(0,0,0,0.75);
 }
 .commentForm {
 	margin-top: 3%;
@@ -20,16 +29,102 @@
 	height:100px;
 }
 
-/* Typed */
+.userAlias{
+  font-size: 3em;
+  display: inline-block;
+  vertical-align: top;
+  font-size: 45px;
+  font-weight: normal;
+  line-height: 48px;
+  color: hsl(200, 100%, 26%);
+}
+
+.userName{
+  font-size: 2.0em;
+  display: block;
+  font-family: 'Lato', sans-serif;
+  color: grey;
+  font-weight: 300;
+  line-height: 52px;
+  margin-left: 5px;
+}
+
+.userField{
+  font-size: 1.2em;
+  display: block;
+  color: #005885;
+  margin-left: 6px;
+}
+
+h3 {
+  margin-top: 5px;
+  margin-bottom: 12px;
+}
+
+.profileInfo{
+  display: inline-block;
+  padding-left: 30px;
+}
+
+#profile{
+  display: inline-flex;
+  margin-left: -108px;
+  border: 1px solid silver;
+  padding: 26px;
+  box-shadow: 2px 3px 14px -8px rgba(0, 0, 0, 0.75);
+  background: white;
+}
+
+#profileTracks{
+  display: inline-flex;
+}
+
+.navButton #link a:link, .navButton #link a:visited {
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+}
+
+#profContainer{
+  background: white;
+  padding-bottom: 5%
+}
+
+div.control {
+  margin-top: 19px;
+}
+
+#track {
+  margin-left: 3px;
+}
+
+.desc {
+  font-size: 16px;
+}
+
+.follow {
+      margin-left: 567px;
+    margin-top: 112px;
+}
+
+.playback {
+  padding-top: 6px;
+  font-size: 17px;
+  font-family: "Avant Garde",Avantgarde,"Century Gothic",CenturyGothic,AppleGothic,sans-serif
+}
+
 
 /* Landing Page */
 
 
 /* general styles */
+
 html, body {
   height: 100%;
-  width: 100%;       
+  width: 100%;
+  background-color: #ebeaea;       
 }
+
 
 /* padded section */
 .pad-section {
@@ -40,7 +135,6 @@ html, body {
 }
 
 .alert {
-
 }
 
 /* vertical-centered text */
@@ -118,58 +212,13 @@ background-image: url("http://www.transparenttextures.com/patterns/asfalt-dark.p
 /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
 }
 
-
-footer {
-  padding: 20px 0;
-  background-color: #403e42;
-background-image: url("http://www.transparenttextures.com/patterns/rough-cloth-light.png");
+.text-center {
+  height: 30%;
 }
+
 
 .text-right {
 	color: white;
-}
-
-footer .glyphicon {
-  color: #333333;
-  font-size: 60px;
-}
-footer .glyphicon:hover {
-  color: #306d9f;
-}
-
-.userAlias{
-	font-size: 3em;
-	display: inline-block;
-	vertical-align: top;
-}
-
-.userName{
-	font-size: 1.5em;
-	display: block;
-}
-
-.userField{
-	font-size: 1em;
-	display: block;
-}
-
-
-.profileInfo{
-	display: inline-block;
-}
-
-#profile{
-	display: inline-flex;
-}
-
-#profileTracks{
-	display: inline-flex;
-}
-
-.navButton #link a:link, .navButton #link a:visited {
-    text-decoration: none;
-    color: white;
-    cursor: pointer;
 }
 
 #profContainer{

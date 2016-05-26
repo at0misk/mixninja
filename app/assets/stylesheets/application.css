@@ -17,6 +17,7 @@
 
 
  /* Static Main Header */
+
 .navButton{
 	display: inline-block;
 	font-size: 1.5em;
@@ -26,12 +27,22 @@
 	color: white;      
 }
 
+.navTitle {
+  color: white;
+  margin-left: -189px;
+  font-family: Futura,"Trebuchet MS",Arial,sans-serif
+}
+
 .navbar {
 	height: 85px;
 	background: #673AB7; /* fallback for old browsers */
 background: -webkit-linear-gradient(to left, #673AB7 , #512DA8); /* Chrome 10-25, Safari 5.1-6 */
 background: linear-gradient(to left, #673AB7 , #512DA8); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
         
+}
+
+.navButton, .navTitle {
+  display: inline-block;
 }
 
 
@@ -70,15 +81,69 @@ background: linear-gradient(to left, #673AB7 , #512DA8); /* W3C, IE 10+/ Edge, F
 }
 
 
-
-
-
-
-
-
-
 .buffer {
 	margin-top: 5%;
 }
+
+a:visited, a:link {
+  text-decoration: none;
+  color: #4B0082;
+}
+
+/* Footer */
+
+
+body > .container
+
+footer .glyphicon {
+  color: #333333;
+  font-size: 60px;
+}
+footer .glyphicon:hover {
+  color: #306d9f;
+}
+
+footer {
+  padding: 20px 0;
+  background-color: #403e42;
+  background-image: url("http://www.transparenttextures.com/patterns/rough-cloth-light.png");
+  height: 150px;
+}
+
+/* Modals */
+
+label {
+  margin-bottom: 12px;
+}
+
+div.control-group {
+  margin-bottom: 14px;
+}
+
+.f {
+    margin-right: 87%;
+    display: inline-block;
+    margin-top: -57px;
+}
+
+.modal-title {
+  color: #005885;;
+}
+
+.b {
+  margin-top:15px;
+}
+
+
+/* Lion */
+
+svg {
+  height: 400px;
+  margin-left: 26%;
+}
+
+
+
+
 
 

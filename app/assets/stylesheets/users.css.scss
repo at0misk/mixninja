@@ -3,7 +3,7 @@
 
 .profilePicture {
     width: 200px;
-    height: 150px;
+    height: auto;
     overflow: hidden;
     display: inline-block;
 }
@@ -21,6 +21,7 @@
 -moz-box-shadow: 2px 3px 14px -8px rgba(0,0,0,0.75);
 box-shadow: 2px 3px 14px -8px rgba(0,0,0,0.75);
 }
+
 .commentForm {
 	margin-top: 3%;
 }
@@ -103,8 +104,8 @@ div.control {
 }
 
 .follow {
-      margin-left: 567px;
-    margin-top: 112px;
+    margin-left: 47%;
+    margin-top: 13%;
 }
 
 .playback {
@@ -215,7 +216,6 @@ background-image: url("http://www.transparenttextures.com/patterns/asfalt-dark.p
 .text-center {
   height: 30%;
 }
-
 
 .text-right {
 	color: white;

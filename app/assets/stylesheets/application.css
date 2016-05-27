@@ -18,6 +18,9 @@
 
  /* Static Main Header */
 
+.img_profile{
+  width: 200px;
+}
 .navButton{
 	display: inline-block;
 	font-size: 1.5em;

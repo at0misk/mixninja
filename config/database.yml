@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: mixninja_production
-  username: mixninja
+  username: ubuntu
   password: <%= ENV['MIXNINJA_DATABASE_PASSWORD'] %>

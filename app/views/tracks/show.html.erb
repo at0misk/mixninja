@@ -11,10 +11,12 @@
 			<div class="track">
 				<div id="waveform"></div>
 						<div class="control">
+							<span id="click">
 							 <button id="trackPlay"class="btn btn-custom" onclick="wavesurfer.playPause()">
 							 	<span id="icon"><i class="glyphicon glyphicon-play"></i></span>
 			    				<span id="play">Play</span>
 			  				</button>
+			  			</span>
 			  				<% if current_user[:id] == @Track.user.id %>
 							<button type="button" class="btn btn-custom" data-toggle="modal" data-target="#deleteModal<%= @Track.id %>">
 					  			Delete
@@ -70,9 +72,9 @@
 								// 	$('.3').addClass("yellow");
 								// };
 							});
-							$('#profPlay').click(function(){
-								$('#pIcon').find('i').toggleClass("glyphicon-play").toggleClass("glyphicon-pause");
-								$('#pPlay').text(function(i, v){
+							$('#click').click(function(){
+								$('#icon').find('i').toggleClass("glyphicon-play").toggleClass("glyphicon-pause");
+								$('#play').text(function(i, v){
 									return v === 'Play' ? 'Pause' : 'Play';
 								});
 							});

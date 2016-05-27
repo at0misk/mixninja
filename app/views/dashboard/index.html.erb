@@ -4,9 +4,86 @@
 	</div>
 	<div class="container">
 		<div id="dashboard">
-		    <h1>Charts:</h1>
-		    <a href="#/following" class="links">Beats You Are Following</a> | <a href="#/top_rated">Trending</a> | <a href="#/new">New Releases</a> 
+			<div class="input-group">
+		      <input type="text" class="form-control partial_search" placeholder="Search for track title..." ng-model="filter_name" >
+		      <i class="glyphicon glyphicon-search"></i>
+		    </div>
+			<div id="angular_title">
+			    <p class='chart'>Charts</p>
+			    <a class="partials" href="#/following" class="partials">Beats You Are Following | </a> <a class="partials" href="#/top_rated">Trending |</a> <a class="partials" href="#/new">New Releases</a> 
+		    </div>
+		    <div class="line"></div>
 		    <div ng-view=""></div>
+	
+					<div class="artwork">
+						<ul class="bars">
+							<li></li>
+							<li></li>
+							<li></li>
+							<li></li>
+							<li></li>
+						</ul>
+					</div>
+
+
+	      
+<div class="turn">
+  <div class="turntable">
+    <div id="platter" class="platter">
+      <div id="record" class="record">
+        <div class="white">
+          <div id="label" class="label" onclick="setSpeed();">
+            Spinnin' 
+            <div class="center">
+              <div class="dot"></div>
+            </div>
+            <div class="center">
+              <div class="dotbig"></div>
+            </div>
+            <div class="center">
+              <div class="dotoutter"></div>
+            </div>
+          </div> 
+        </div>
+      </div>
+    </div>
+    <div id="startstop" class="startstop">
+      Start / Stop
+    </div>
+    <div class="strobe">
+    </div>
+    <div class="red">  
+    </div>
+  </div> 
+</div>
+	
 		</div>
 	</div>
 </div>
+
+<script>
+
+document.getElementById('startstop').addEventListener('click', function(e) {
+  if(document.getElementById("platter").className == "platter") {
+    document.getElementById("platter").className = "platterpause";
+  } else {
+    document.getElementById("platter").className = "platter";  
+  }
+});
+
+for(var i=5; i<360; i=i+5) {
+  var temp = "<div class='center' style='-webkit-transform: rotate(" + i + "deg);'> <div class='dot'></div> </div>"
+  $("#label").append(temp);
+}
+
+for(var i=6; i<360; i=i+6) {
+  var temp = "<div class='center' style='-webkit-transform: rotate(" + i + "deg);'> <div class='dotbig'></div> </div>"
+  $("#label").append(temp);
+}
+
+for(var i=8; i<360; i=i+8) {
+  var temp = "<div class='center' style='-webkit-transform: rotate(" + i + "deg);'> <div class='dotoutter'></div> </div>"
+  $("#label").append(temp);
+}
+
+</script>

@@ -27,3 +27,5 @@ gem 'hirb'
 gem 'selenium-webdriver'
 gem 'json'
 gem "paperclip", "~> 4.2"
+
+gem 'angular-turbolinks', '~> 0.1.0'

@@ -13,7 +13,7 @@
 			    <a class="partials" href="#/following" class="partials">Beats You Are Following | </a> <a class="partials" href="#/top_rated">Trending |</a> <a class="partials" href="#/new">New Releases</a> 
 		    </div>
 		    <div class="line"></div>
-		    <div ng-view=""></div>
+		    <div ng-view="" data-no-turbolink></div>
 	
 					<div class="artwork">
 						<ul class="bars">
@@ -64,7 +64,6 @@
 
 
 <script>
-
 document.getElementById('startstop').addEventListener('click', function(e) {
   if(document.getElementById("platter").className == "platter") {
     document.getElementById("platter").className = "platterpause";
@@ -72,20 +71,16 @@ document.getElementById('startstop').addEventListener('click', function(e) {
     document.getElementById("platter").className = "platter";  
   }
 });
-
 for(var i=5; i<360; i=i+5) {
   var temp = "<div class='center' style='-webkit-transform: rotate(" + i + "deg);'> <div class='dot'></div> </div>"
   $("#label").append(temp);
 }
-
 for(var i=6; i<360; i=i+6) {
   var temp = "<div class='center' style='-webkit-transform: rotate(" + i + "deg);'> <div class='dotbig'></div> </div>"
   $("#label").append(temp);
 }
-
 for(var i=8; i<360; i=i+8) {
   var temp = "<div class='center' style='-webkit-transform: rotate(" + i + "deg);'> <div class='dotoutter'></div> </div>"
   $("#label").append(temp);
 }
-
 </script>

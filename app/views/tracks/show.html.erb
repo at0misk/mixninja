@@ -39,6 +39,26 @@ $(document).on('submit', '#destroyLike<%= @Track.id %>', function() {
       });
       return false; // prevents normal behaviour
   });
+$(document).on('submit', '#trackCommentForm', function() { 
+      var valuesToSubmit = $(this).serialize();
+      $.ajax({
+          type: "POST",
+          url: "/comments", //sumbits it to the given url of the form
+          data: valuesToSubmit,
+          dataType: "json"
+          }).success(function(json){
+            console.log(json);
+        $.ajax({
+        type: "GET",
+        url: "/commentDex/<%= @Track.id %>",
+        success: function(data){
+          $("#commentDiv").html(data);
+          $("#commentDiv").scrollTop($("#commentDiv")[0].scrollHeight);
+        }
+          }); // you want a difference between normal and ajax-calls, and json is standard
+      });
+      return false; // prevents normal behaviour
+  });
 </script>
 <div id="wrapper" data-no-turbolink>
 <div class="container">
@@ -169,7 +189,7 @@ $(document).on('submit', '#destroyLike<%= @Track.id %>', function() {
 			</div>
 
 			<h3 class="show">Comments</h3>
-			<div class="track comments">
+			<div class="track comments" id="commentDiv">
 					<% @Track.comments.each do |c| %>
 					<p class="user"><div class="profilePictureSmall"><img class='profilePictureSmall' src='<%= c.user.avatar.url   %>'></img></div> <a href="/users/<%= c.user.id %>"><%= c.user.alias %></a></p>
 					<p><%= c.content %></p>
@@ -177,7 +197,7 @@ $(document).on('submit', '#destroyLike<%= @Track.id %>', function() {
 			</div>
 
 			<h3 class="show">Add Comment </h3>
-			<form action="/comments" method="post" class="commentForm">
+			<form action="/comments" method="post" class="commentForm" data-remote="false" id="trackCommentForm">
 				<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 				<input name="comment[track_id]" value="<%= @Track.id %>" type="hidden">
 				<input name="comment[user_id]" value="<%= current_user[:id] %>" type="hidden">

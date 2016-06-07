@@ -1,0 +1,4 @@
+<% @Track.comments.each do |c| %>
+<p class="user"><div class="profilePictureSmall"><img class='profilePictureSmall' src='<%= c.user.avatar.url   %>'></img></div> <a href="/users/<%= c.user.id %>"><%= c.user.alias %></a></p>
+<p><%= c.content %></p>
+<% end %>

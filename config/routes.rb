@@ -42,6 +42,7 @@ Rails.application.routes.draw do
   get 'tracks/:id' => 'tracks#show'
   patch 'users/:id' => 'users#update'
   get 'divDex/:id' => 'tracks#divDex'
+  get 'commentDex/:id' => 'comments#commentDex'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

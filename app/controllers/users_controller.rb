@@ -4,12 +4,14 @@ class UsersController < ApplicationController
 	end
 
 	def show
+		@vis_js = 1
 		@User = User.find(params[:id])
 		@Follows = Follow.where(follow_id: params[:id])
 
 	end
 
 	def current_show
+		@vis_js = 1
 		@User = User.find(current_user[:id])		
 		render 'show'
 	end

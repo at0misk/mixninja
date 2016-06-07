@@ -2,6 +2,7 @@ class TracksController < ApplicationController
 	def index
 	end
 	def show
+		@vis_js = 1
 		@Track = Track.find(params[:id])
 		@Likes = Like.where(track_id: params[:id])		
 		@tracklist = Tracklist.where(track_id: params[:id])
@@ -37,4 +38,9 @@ class TracksController < ApplicationController
 	def track_params
   		params.require(:track).permit(:title, :desc, :user_id, :avatar)
 	end
+	def divDex
+  		# @Follows = Follow.where(follow_id: params[:id])
+  		@Track = Track.find(params[:id])
+  		render :partial => "likeDiv", :layout => false
+  	end
 end

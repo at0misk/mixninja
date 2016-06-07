@@ -1,3 +1,47 @@
+<% @User.tracks.each do |t| %>	
+<script type="text/javascript">
+$(document).on('submit', '#makeLike<%= t.id %>', function(){
+	console.log("loaded");
+	    var valuesToSubmit = $(this).serialize();
+	    $.ajax({
+	        type: "POST",
+	        url: "/like", //sumbits it to the given url of the form
+	        data: valuesToSubmit,
+	        dataType: "json" // you want a difference between normal and ajax-calls, and json is standard
+	    }).success(function(json){
+	    	$.ajax({
+	    	type: "GET",
+	    	url: "/divDex/<%= t.id %>",
+	    	success: function(data){
+	    		console.log(data)
+	    		$("#likes<%= t.id %>").html(data);
+	    	}
+	    	});
+	    });
+	    return false; // prevents normal behaviour
+});
+$(document).on('submit', '#destroyLike<%= t.id %>', function() {
+      var id = $(this).children('.userDeleteId<%= t.id %>').val() 
+      var valuesToSubmit = $(this).serialize();
+      $.ajax({
+          type: "POST",
+          url: "/like", //sumbits it to the given url of the form
+          data: valuesToSubmit,
+          dataType: "json"
+          }).success(function(json){
+            console.log(json);
+        $.ajax({
+        type: "GET",
+        url: "/divDex/<%= t.id %>",
+        success: function(data){
+          $("#likes<%= t.id %>").html(data);
+        }
+          }); // you want a difference between normal and ajax-calls, and json is standard
+      });
+      return false; // prevents normal behaviour
+  });
+</script>
+<% end %>
 <div class="container" id="profContainer">
 	<div class="buffer">
 	</div>
@@ -38,10 +82,7 @@
 			<% end %>
 		</div>	
 	</div>
-
-			
-
-		
+	<div class="tracksDiv">
 	<div class="row">
 			<% @User.tracks.each do |t| %>	
 			<!-- Modal -->
@@ -86,24 +127,25 @@
 					  			Delete
 							</button>
 							<% end %>
-							<div id="likes">
+							<div id="likes<%= t.id %>">
 							<h4 class="like"><span class="purple"><%= t.likes.count %></span> Likes</h4>
 
 							<% if t.likes.exists?(user_id: current_user[:id]) %>
-								<form action="/like" method="post" class="like">
+								<form action="/like" method="post" class="like destroyLike<%= t.id %>" data-remote="false" id="destroyLike<%= t.id %>">
 									<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 									<input type='hidden' name='_method' value='delete'>
-									<input type="hidden" name="like[user_id]" value="<%= current_user[:id] %>">
+									<input type="hidden" class ="userDeleteId<%= t.id %>" name="like[user_id]" value="<%= current_user[:id] %>">
 									<input type="hidden" name="like[track_id]" value="<%= t.id %>">
 									<input type="submit" class="btn btn-purple" value="Unlike">
 								</form>
 								<% else %>
-								<form action="/like" method="post" class="like like2">
+								<form action="/like" method="post" class="like like2 makeLike<%= t.id %>" data-remote="false" id="makeLike<%= t.id %>">
 									<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 									<input type="hidden" name="like[user_id]" value="<%= current_user[:id] %>">
 									<input type="hidden" name="like[track_id]" value="<%= t.id %>">
 									<input type="submit" class="btn btn-purple" value="Like">
 								</form>
+
 							<% end %>
 							</div>
 						</div>
@@ -153,7 +195,7 @@
 			</div>
 		<% end %>			
 	</div>
-
+		</div>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" class="polylion">
   <defs>
     <filter id="polycleaner" color-interpolation-filters="sRGB">

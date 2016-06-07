@@ -1,0 +1,112 @@
+<div class="row">
+			<% @User.tracks.each do |t| %>	
+			<!-- Modal -->
+			<% if current_user %>
+			<div class="modal fade" id="deleteModal<%= t.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			        <h4 class="modal-title" id="myModalLabel">Delete <%= t.title %>?</h4>
+			      </div>
+			      <div class="modal-body">
+			      		<form action='/tracks' method='post'>
+						    <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
+						    <input type='hidden' name='_method' value='delete'>
+						    <input type='hidden' name='id' value='<%= t.id %>'>
+						    <input type="submit" class="btn btn-purple" value="Delete">
+						</form>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-custom" data-dismiss="modal">Close</button>
+			        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+			        </form>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+			<% end %>
+			<!-- End Modal -->
+				<div class="col-xs-12">	
+				<div class="track">			
+						<h1><a href="/tracks/<%= t.id %>"><%= t.title %></a></h1>
+							<h3><span class="desc"><%= t.desc %></span></h3>
+							<div id="waveform<%= t.id %>"></div>
+							<div class="Pcontrol">
+							 <button id="profPlay<%= t.id %>" class="btn btn-custom" onclick="wavesurfer<%= t.id %>.playPause()">
+							 	<span id="pIcon<%= t.id %>"><i class="glyphicon glyphicon-play"></i></span>
+			    				<span id="pPlay<%= t.id %>">Play</span>
+			  				</button>
+			  				<% if current_user[:id] == @User.id %>
+							<button type="button" class="btn btn-custom" id="track" data-toggle="modal" data-target="#deleteModal<%= t.id %>">
+					  			Delete
+							</button>
+							<% end %>
+							<div id="likes">
+							<h4 class="like"><span class="purple"><%= t.likes.count %></span> Likes</h4>
+
+							<% if t.likes.exists?(user_id: current_user[:id]) %>
+								<form action="/like" method="post" class="like">
+									<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+									<input type='hidden' name='_method' value='delete'>
+									<input type="hidden" name="like[user_id]" value="<%= current_user[:id] %>">
+									<input type="hidden" name="like[track_id]" value="<%= t.id %>">
+									<input type="submit" class="btn btn-purple" value="Unlike">
+								</form>
+								<% else %>
+								<form action="/like" method="post" class="like like2" data-remote="true" id="makeLike">
+									<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+									<input type="hidden" name="like[user_id]" value="<%= current_user[:id] %>">
+									<input type="hidden" name="like[track_id]" value="<%= t.id %>">
+									<input type="submit" class="btn btn-purple" value="Like">
+								</form>
+
+							<% end %>
+							</div>
+						</div>
+					<script type="text/javascript">
+						var wavesurfer<%= t.id %> = WaveSurfer.create({
+							barWidth: 1,
+							fillParent: true,
+							progressColor: 'blue',
+							waveColor: 'purple',
+							container: '#waveform<%= t.id %>',
+							backend: 'MediaElement',
+							scrollParent: true
+						});
+						wavesurfer<%= t.id %>.load('<%= t.avatar.url %>');
+						$(document).ready(function(){
+							wavesurfer<%= t.id %>.on('audioprocess', function(){
+								var current = wavesurfer<%= t.id %>.getCurrentTime()
+								var d = moment.duration(current, 'seconds')
+								var hours = ("0" + d.hours()).slice(-2);
+								var minutes = ("0" + d.minutes()).slice(-2);
+								var seconds = ("0" + d.seconds()).slice(-2);
+								var milli = ("0" + Math.floor(d.milliseconds())).slice(-2);
+								var fullTime = (hours + ": " + minutes + ": " + seconds + ": " + milli)
+								$('#time<%= t.id %>').html(hours + ": " + minutes + ": " + seconds + ": " + milli);
+								console.log(fullTime);
+								if (fullTime >= "00: 00: 00: 00" && fullTime <= "00: 00: 05: 00"){
+									$('.1<%= t.id %>').addClass("yellow")
+								};
+								if (fullTime >= "00: 00: 05: 00" && fullTime <= "00: 00: 08: 00"){
+									$('.1<%= t.id %>').removeClass("yellow")									
+									$('.2<%= t.id %>').addClass("yellow")
+								};
+								if (fullTime >= "00: 00: 08: 00"){
+									$('.2<%= t.id %>').removeClass("yellow")									
+									$('.3<%= t.id %>').addClass("yellow")
+								};
+							});
+							$('#profPlay<%= t.id %>').click(function(){
+								$('#pIcon<%= t.id %>').find('i').toggleClass("glyphicon-play").toggleClass("glyphicon-pause");
+								$('#pPlay<%= t.id %>').text(function(i, v){
+									return v === 'Play' ? 'Pause' : 'Play';
+								});
+							});
+						});
+					</script>
+				</div>
+			</div>
+		<% end %>			
+	</div>

@@ -1,0 +1,20 @@
+<% @Track.each do |t| %>	
+<h4 class="like"><span class="purple"><%= t.likes.count %></span> Likes</h4>
+
+<% if t.likes.exists?(user_id: current_user[:id]) %>
+	<form action="/like" method="post" class="like destroyLike<= t.id %>" data-remote="false">
+		<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+		<input type='hidden' name='_method' value='delete'>
+		<input type="hidden" class ="userDeleteId" name="like[user_id]" value="<%= current_user[:id] %>">
+		<input type="hidden" name="like[track_id]" value="<%= t.id %>">
+		<input type="submit" class="btn btn-purple" value="Unlike">
+	</form>
+	<% else %>
+	<form action="/like" method="post" class="like like2 makeLike<%= t.id %>" data-remote="true">
+		<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+		<input type="hidden" name="like[user_id]" value="<%= current_user[:id] %>">
+		<input type="hidden" name="like[track_id]" value="<%= t.id %>">
+		<input type="submit" class="btn btn-purple" value="Like">
+	</form>
+<% end %>
+<% end %>

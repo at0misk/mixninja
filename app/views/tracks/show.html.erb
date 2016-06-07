@@ -1,3 +1,45 @@
+<script type="text/javascript">
+$(document).on('submit', '#makeLike<%= @Track.id %>', function(){
+	console.log("loaded");
+	    var valuesToSubmit = $(this).serialize();
+	    $.ajax({
+	        type: "POST",
+	        url: "/like", //sumbits it to the given url of the form
+	        data: valuesToSubmit,
+	        dataType: "json" // you want a difference between normal and ajax-calls, and json is standard
+	    }).success(function(json){
+	    	$.ajax({
+	    	type: "GET",
+	    	url: "/divDex/<%= @Track.id %>",
+	    	success: function(data){
+	    		console.log(data)
+	    		$("#likes").html(data);
+	    	}
+	    	});
+	    });
+	    return false; // prevents normal behaviour
+});
+$(document).on('submit', '#destroyLike<%= @Track.id %>', function() {
+      var id = $(this).children('.userDeleteId<%= @Track.id %>').val() 
+      var valuesToSubmit = $(this).serialize();
+      $.ajax({
+          type: "POST",
+          url: "/like", //sumbits it to the given url of the form
+          data: valuesToSubmit,
+          dataType: "json"
+          }).success(function(json){
+            console.log(json);
+        $.ajax({
+        type: "GET",
+        url: "/divDex/<%= @Track.id %>",
+        success: function(data){
+          $("#likes").html(data);
+        }
+          }); // you want a difference between normal and ajax-calls, and json is standard
+      });
+      return false; // prevents normal behaviour
+  });
+</script>
 <div id="wrapper">
 <div class="container">
 	<div class="buffer">
@@ -87,7 +129,7 @@
 					<h4 class="like"><span class="purple"><%= @Likes.count %></span> Likes</h4>
 
 					<% if @Likes.exists?(user_id: current_user[:id]) %>
-						<form action="/like" method="post" class="like like2">
+						<form action="/like" method="post" class="like like2" data-remote="false" id="destroyLike<%= @Track.id %>">
 							<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 							<input type='hidden' name='_method' value='delete'>
 							<input type="hidden" name="like[user_id]" value="<%= current_user[:id] %>">
@@ -95,7 +137,7 @@
 							<input type="submit" class="btn btn-purple" value="Unlike">
 						</form>
 						<% else %>
-						<form action="/like" method="post" class="like like2">
+						<form action="/like" method="post" class="like like2" data-remote="false" id="makeLike<%= @Track.id %>">
 							<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 							<input type="hidden" name="like[user_id]" value="<%= current_user[:id] %>">
 							<input type="hidden" name="like[track_id]" value="<%= @Track.id %>">

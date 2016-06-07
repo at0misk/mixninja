@@ -6,5 +6,6 @@ class CreateLikes < ActiveRecord::Migration
 
       t.timestamps
     end
+    execute "ALTER TABLE likes ADD PRIMARY KEY (user_id,track_id);"
   end
 end

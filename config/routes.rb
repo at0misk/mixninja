@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # root 'users#index'
-
+  # resources :likes
 
   get 'dashboard' => 'dashboard#index'
   get 'dashboard/show' => 'dashboard#show'
@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   post 'follows' => 'follows#create'
   delete 'like' => 'likes#destroy'
   post 'tracks' => 'tracks#create'
+  # get 'like/:id' => 'users#divDex'
 
   delete 'follows' => 'follows#destroy'
   get 'tracks' => 'tracks#index'
@@ -40,7 +41,7 @@ Rails.application.routes.draw do
   get 'users/:id' => 'users#show'
   get 'tracks/:id' => 'tracks#show'
   patch 'users/:id' => 'users#update'
-
+  get 'divDex/:id' => 'tracks#divDex'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

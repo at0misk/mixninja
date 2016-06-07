@@ -4,6 +4,6 @@ class DashboardController < ApplicationController
 		# @User = User.find(params[:id])
 	end
 	def show
-		render :json => User.find_by_sql("SELECT tracks.title, tracks.desc, tracks.id FROM users LEFT JOIN follows ON users.id = follows.user_id LEFT JOIN tracks ON follows.follow_id = tracks.user_id")
+		render :json => Track.find_by_sql("SELECT tracks.title, tracks.id, tracks.desc FROM follows LEFT JOIN users ON users.id = follows.follow_id LEFT JOIN tracks ON tracks.user_id = follows.follow_id") 
 	end
 end

@@ -1,5 +1,11 @@
 var app = angular.module('musicApp', ['ngRoute']);
-app.config(function($routeProvider) {
+
+$(document).on('ready page:load', function(){
+    angular.bootstrap('body', ['musicApp']);
+});
+
+app.config(function($routeProvider, $httpProvider) {
+    console.log("app configed");
     $routeProvider
         .when("/following", {
             templateUrl: "/partials/following.html",
@@ -13,6 +19,9 @@ app.config(function($routeProvider) {
             templateUrl: "/partials/top_rated.html",
             controller: "trendingController"
         })
+
+         $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content');
+
 });
 
 app.factory("followsFactory", function($http){

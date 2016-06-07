@@ -1,11 +1,22 @@
-<div>
-	<h2> Trending </h2>
+<div class="partial_container">
+	<h2 div class="partial_title"> Trending </h2>
+	<div class="line"></div>
 
-	<div class="input-group">
-      <input type="text" class="form-control" placeholder="Search for..." ng-model="filter_name">
-    </div>
+	<div class="t">
+	    <table class="table table-striped table-bordered">
+		  	<thead class="thead-default">
+		    <tr>
+		      <th>Track Title</th>
+		      <th>Description</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <tr ng-repeat="trend in trends | filter:filter_name">
+		      <td><a href="/tracks/{{trend.id}}"> {{ trend.title }} </a></td>
+		      <td>{{trend.desc}} </td>
+		    </tr>
+		  </tbody>
+		</table>
+	</div>
 
-	<ul>
-        <li ng-repeat="trend in trends | filter:filter_name"><a href="/tracks/{{trend.id}}"> {{ trend.title }} </a> - {{trend.desc}} </li>
-    </ul>
  </div>

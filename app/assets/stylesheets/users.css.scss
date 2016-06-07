@@ -37,7 +37,7 @@ box-shadow: 2px 3px 14px -8px rgba(0,0,0,0.75);
   font-size: 45px;
   font-weight: normal;
   line-height: 48px;
-  color: hsl(200, 100%, 26%);
+  color: #3232CC;
 }
 
 .userName{
@@ -53,7 +53,7 @@ box-shadow: 2px 3px 14px -8px rgba(0,0,0,0.75);
 .userField{
   font-size: 1.2em;
   display: block;
-  color: #005885;
+  color: #3232CC;
   margin-left: 6px;
 }
 
@@ -114,6 +114,10 @@ div.control {
   font-family: "Avant Garde",Avantgarde,"Century Gothic",CenturyGothic,AppleGothic,sans-serif
 }
 
+.Pcontrol {
+  margin-top: 3%;
+}
+
 
 /* Landing Page */
 
@@ -123,7 +127,11 @@ div.control {
 html, body {
   height: 100%;
   width: 100%;
-  background-color: #ebeaea;       
+  background-color: #e8eaf6;      
+}
+
+.container {
+  /* background-color: #ebeaea;  */
 }
 
 

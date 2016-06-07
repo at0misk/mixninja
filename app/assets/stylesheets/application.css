@@ -18,6 +18,9 @@
 
  /* Static Main Header */
 
+.img_profile{
+  width: 200px;
+}
 .navButton{
 	display: inline-block;
 	font-size: 1.5em;
@@ -29,7 +32,6 @@
 
 .navTitle {
   color: white;
-  margin-left: -16%;
   font-family: Futura,"Trebuchet MS",Arial,sans-serif
 }
 
@@ -43,7 +45,10 @@
 	background: #673AB7; /* fallback for old browsers */
 background: -webkit-linear-gradient(to left, #673AB7 , #512DA8); /* Chrome 10-25, Safari 5.1-6 */
 background: linear-gradient(to left, #673AB7 , #512DA8); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-        
+   
+-webkit-box-shadow: 0 8px 6px -6px #999;
+    -moz-box-shadow: 0 8px 6px -6px #999;
+    box-shadow: 0 8px 6px -6px #999;     
 }
 
 .navButton, .navTitle {
@@ -112,7 +117,7 @@ footer {
   padding: 20px 0;
   background-color: #403e42;
   background-image: url("http://www.transparenttextures.com/patterns/rough-cloth-light.png");
-  height: 150px;
+  height: 165px;
 }
 
 /* Modals */
@@ -132,11 +137,33 @@ div.control-group {
 }
 
 .modal-title {
-  color: #005885;;
+  color: #3232CC;
 }
 
 .b {
   margin-top:15px;
+}
+
+.a {
+  margin-bottom: 15px;
+}
+
+.c {
+    margin-top: 7%;
+    margin-left: 40%;
+}
+
+/*.controls {
+  margin-left: 39%;
+}*/
+
+.remove_field {
+  margin-top: 12px;
+  margin-bottom: 18px;
+}
+
+.list {
+  margin-top: 2%;
 }
 
 

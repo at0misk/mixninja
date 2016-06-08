@@ -54,6 +54,7 @@ $(document).on('submit', '#trackCommentForm', function() {
         success: function(data){
           $("#commentDiv").html(data);
           $("#commentDiv").scrollTop($("#commentDiv")[0].scrollHeight);
+          $('.commentBox').val('');
         }
           }); // you want a difference between normal and ajax-calls, and json is standard
       });
@@ -201,7 +202,7 @@ $(document).on('submit', '#trackCommentForm', function() {
 				<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 				<input name="comment[track_id]" value="<%= @Track.id %>" type="hidden">
 				<input name="comment[user_id]" value="<%= current_user[:id] %>" type="hidden">
-				<textarea name="comment[content]" class="commentBox"></textarea>
+				<span id="commentBox"><textarea name="comment[content]" class="commentBox"></textarea></span>
 				<p><input type="submit" id="comment_butt" class="btn btn-purple" value="Comment"></p>
 			</form>
 		</div>

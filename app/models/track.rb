@@ -9,5 +9,7 @@ class Track < ActiveRecord::Base
 	 has_many :tracklists, dependent: :destroy
 	 has_many :comments
 	 has_many :likes
-
+	 validates :title, presence: true
+	 validates :desc, presence: true
+	 validates :avatar, presence: true
 end

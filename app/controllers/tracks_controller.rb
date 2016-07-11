@@ -18,7 +18,6 @@ class TracksController < ApplicationController
 	end
 	def create
 		@Track = Track.new(track_params)
-
 		puts params[:tracklist]
 		if @Track.save
 			puts "saved"
@@ -26,8 +25,7 @@ class TracksController < ApplicationController
 			tracklist_id = Track.last.id
 			@tracklist = Tracklist.create(track_id: tracklist_id, tracks: params[:tracklist])
 		else
-			puts "didn't save"
-			puts "#{@Track}"
+	  		flash[:errors] = @Track.errors.full_messages
 		end
 		redirect_to :back
 	end

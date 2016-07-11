@@ -1,4 +1,13 @@
 <% @Track.comments.each do |c| %>
 <p class="user"><div class="profilePictureSmall"><img class='profilePictureSmall' src='<%= c.user.avatar.url   %>'></img></div> <a href="/users/<%= c.user.id %>"><%= c.user.alias %></a></p>
-<p><%= c.content %></p>
+<p><%= c.content %>
+<% if c.user.id == current_user[:id] %>
+<form action='/comments' method='post'>
+    <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
+    <input type='hidden' name='_method' value='delete'>
+    <input type='hidden' name='id' value='<%= c.id %>'>
+    <input type="submit" value="Delete" class="btn btn-custom">
+</form>
+<% end %>
+</p>
 <% end %>

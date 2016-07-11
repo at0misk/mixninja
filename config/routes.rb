@@ -36,7 +36,7 @@ Rails.application.routes.draw do
   get 'tracks' => 'tracks#index'
   delete 'tracks' => 'tracks#destroy'
   post 'comments' => 'comments#create'
-
+  delete 'comments' => 'comments#destroy'
   delete 'users/:id' => 'users#destroy'
   get 'users/:id' => 'users#show'
   get 'tracks/:id' => 'tracks#show'

@@ -40,7 +40,11 @@
     <div class="navTitle">
      <h1 class="pull-left"><a href="/dashboard#/new">MixNinja</a></h1>      
     </div>
-
+  <% if flash[:errors] %>
+  <span class="white2">
+  Error:  Make sure all fields are filled out when uploading a track.
+  </span>
+  <% end %>
    <div class="navButton">
      <button class="btn btn-custom btn-lg" id="link"><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></button>        
     </div>
@@ -114,9 +118,9 @@
           
             <button class="add_field_button btn btn-custom a">Add New Track</button>
 
-            <div><span><strong>Track Title</strong></span> <input type="text" class="form-control input-large" name="tracklist[track]"/><span><strong>
+            <div><span><strong>Track Title</strong></span> <input type="text" class="form-control input-large" name="tracklist[track]" placeholder="First Track"/><span><strong>
 
-            Start Time</strong></span> <input type="text" class="form-control input-large" name="tracklist[time]"/></div>  
+            Start Time</strong></span> <input type="text" class="form-control input-large" name="tracklist[time]" placeholder="00:00:00:00"/></div>  
 
         </div>
 
@@ -215,7 +219,7 @@
         <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
         </form>
          <form action='/users/:id' method='post' data-method='delete'>                            
-              <%= button_to 'Destroy', {action: :destroy, controller: :users, id: current_user.id},  onclick: 'return confirm("Are you sure?")', method: :delete, :class => "btn btn-purple f" %>      
+              <%= button_to 'Delete Account', {action: :destroy, controller: :users, id: current_user.id},  onclick: 'return confirm("Are you sure?")', method: :delete, :class => "btn btn-purple f" %>      
           </form>
       </div>
     </div>

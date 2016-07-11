@@ -19,4 +19,8 @@ class CommentsController < ApplicationController
 		@Track = Track.find(params[:id])
   		render :partial => "commentDiv", :layout => false
 	end
+	def destroy
+		Comment.find(params[:id]).destroy
+		redirect_to :back
+	end
 end

@@ -82,7 +82,7 @@ $(document).ready(function() {
         e.preventDefault();
         if(x < max_fields){ //max input box allowed
             x++; //text box increment
-            $(wrapper).append('<div class="list"><span><strong>Track Title<strong></span><input type="text" class="form-control input-large" name="tracklist[track' + count + ']"/><span>Start Time</span><input type="text" class="form-control input-large" name="tracklist[time' + count + ']"/><a href="#" class="remove_field btn btn-custom">Remove</a></div>'); //add input box
+            $(wrapper).append('<div class="list"><span><strong>Track Title<strong></span><input type="text" class="form-control input-large" placeholder="Another Title Name" name="tracklist[track' + count + ']"/><span>Start Time</span><input type="text" class="form-control input-large" placeholder="00:00:00:00" name="tracklist[time' + count + ']"/><a href="#" class="remove_field btn btn-custom">Remove</a></div>'); //add input box
         }
         count++;
         console.log(count);
@@ -94,7 +94,10 @@ $(document).ready(function() {
 
 
     $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
-        e.preventDefault(); $(this).parent('div').remove(); x--;
+        e.preventDefault(); 
+        // $(this).parent('div').remove();
+        $(this).closest('div').remove();
+        x--;
     })
 });
    

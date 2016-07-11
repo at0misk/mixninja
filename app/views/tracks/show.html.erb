@@ -60,6 +60,9 @@ $(document).on('submit', '#trackCommentForm', function() {
       });
       return false; // prevents normal behaviour
   });
+$(document).ready(function(){
+	$("#commentDiv").scrollTop($("#commentDiv")[0].scrollHeight);
+})
 </script>
 <div id="wrapper" data-no-turbolink>
 <div class="container">
